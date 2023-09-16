@@ -76,6 +76,10 @@ void autonomous() {}
 void opcontrol() {
 	while (true) {
 		SetDriveMotors();	
+		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) {
+			DirectionToggle();
+			ControllerDisplay();
+		}
 
 		pros::delay(20);
 	}
