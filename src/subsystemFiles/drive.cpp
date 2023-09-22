@@ -1,10 +1,18 @@
 #include "main.h"
+
 short int LYAxis;
 short int RYAxis;
 bool isReverse = false;
+
 void DirectionToggle(){
     isReverse = !isReverse;
+    ControllerDisplay();
 }
+
+float GetCurveOutput(int input){
+    return (std::exp(-20/12.7) + std::exp((std::abs(input) - 127) / 12.7) * (1 - std::exp(-20 / 12.7)));
+}
+
 void SetDriveMotors(){
     LYAxis = Controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
     RYAxis = Controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
@@ -22,7 +30,4 @@ void SetDriveMotors(){
         FRMotor.move(GetCurveOutput(LYAxis));
         FLMotor.move(GetCurveOutput(RYAxis));
     }
-}
-float GetCurveOutput(int input){
-    return (std::exp(-20/12.7) + std::exp((std::abs(input) - 127) / 12.7) * (1 - std::exp(-20 / 12.7)));
 }
