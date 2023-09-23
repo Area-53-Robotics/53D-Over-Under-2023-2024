@@ -21,14 +21,10 @@ void SetDriveMotors() {
     if(abs(RYAxis) <= 10) RYAxis = 0;
 
     if (!isReverse) {
-        BLMotor.move(GetCurveOutput(LYAxis));
-        BRMotor.move(GetCurveOutput(RYAxis));
-        FRMotor.move(GetCurveOutput(RYAxis));
-        FLMotor.move(GetCurveOutput(LYAxis));
+        LMotors.move(GetCurveOutput(LYAxis));
+        RMotors.move(GetCurveOutput(RYAxis));
     } else if(isReverse) {
-        BLMotor.move(GetCurveOutput(RYAxis));
-        BRMotor.move(GetCurveOutput(LYAxis));
-        FRMotor.move(GetCurveOutput(LYAxis));
-        FLMotor.move(GetCurveOutput(RYAxis));
+        LMotors.move(GetCurveOutput(RYAxis));
+        RMotors.move(GetCurveOutput(LYAxis));
     }
 }

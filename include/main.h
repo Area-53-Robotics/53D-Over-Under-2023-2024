@@ -72,6 +72,7 @@ void opcontrol(void);
 #endif
 
 #ifdef __cplusplus
+#include "liblvgl/lvgl.h"
 #include "global.hpp"
 #include "subsystemHeaders/drive.hpp"
 //#include <iostream>
