@@ -10,4 +10,6 @@ extern pros::Motor FRMotor;
 extern pros::MotorGroup LMotors;
 extern pros::MotorGroup RMotors;
 
+extern pros::ADIDigitalOut WingPistons;
+
 extern void ControllerDisplay();

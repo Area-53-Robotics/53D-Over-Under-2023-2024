@@ -75,6 +75,7 @@ void opcontrol(void);
 #include "liblvgl/lvgl.h"
 #include "global.hpp"
 #include "subsystemHeaders/drive.hpp"
+#include "subsystemHeaders/wings.hpp"
 //#include <iostream>
 #endif
 
