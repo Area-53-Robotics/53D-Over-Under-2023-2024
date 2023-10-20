@@ -13,3 +13,4 @@ extern pros::MotorGroup RMotors;
 extern pros::ADIDigitalOut WingPistons;
 
 extern void ControllerDisplay();
+unsigned short int GamePhase;

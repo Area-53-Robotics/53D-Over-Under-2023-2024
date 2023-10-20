@@ -15,4 +15,12 @@ extern pros::ADIDigitalOut WingPistons(1);
 void ControllerDisplay() {
     if(!isReverse) Controller.print(0, 0, "Reversed: false");
     else if (isReverse)  Controller.print(0, 0, "Reversed: true");
-}
+}  
+
+/*
+*   Integer variable to represent the current game phase:
+    1: Pre-Autonomous
+    2: Autonomous
+    3: Driver Control
+*/
+unsigned short int GamePhase = 1;
