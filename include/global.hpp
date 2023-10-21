@@ -11,9 +11,7 @@ extern pros::Motor CatapultMotor;
 extern pros::MotorGroup LMotors;
 extern pros::MotorGroup RMotors;
 
-extern pros::ADIDigitalOut WingPistons;
-
-extern pros::ADIDigitalIn CataLimitSwitch;
+extern pros::adi::DigitalOut WingPistons;
 
 extern void ControllerDisplay();
 extern unsigned short int GamePhase;

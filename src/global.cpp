@@ -7,25 +7,17 @@ pros::Controller Controller(pros::E_CONTROLLER_MASTER);
     Best Battery: 13
 */
 
-/*
-pros::Motor BLMotor(-2, pros::v5::Motor_Gears::green);
-pros::Motor FLMotor(-15, pros::v5::Motor_Gears::green);
-pros::Motor BRMotor(20, pros::v5::Motor_Gears::green);
-pros::Motor FRMotor(8, pros::v5::Motor_Gears::green);
-*/
 pros::Motor CatapultMotor(9, pros::v5::Motor_Gears::red);
 
-pros::MotorGroup LMotors({-2, -15});
-pros::MotorGroup RMotors({20, 8});
+pros::MotorGroup LMotors({-2, -15}, pros::v5::Motor_Gears::green);
+pros::MotorGroup RMotors({20, 8}, pros::v5::Motor_Gears::green);
 
-extern pros::ADIDigitalOut WingPistons(1);
-
-extern pros::ADIDigitalIn CataLimitSwitch(1);
+pros::adi::DigitalOut WingPistons(1);
 
 void ControllerDisplay() {
     if(!isReverse) Controller.print(0, 0, "Reversed: false");
-    else if(isReverse)  Controller.print(0, 0, "Reversed: true");
-}  
+    else if(isReverse) Controller.print(0, 0, "Reversed: true");
+}
 
 /*
 *   Integer variable to represent the current game phase:
