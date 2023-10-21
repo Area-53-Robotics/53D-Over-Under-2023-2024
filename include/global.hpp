@@ -16,4 +16,4 @@ extern pros::ADIDigitalOut WingPistons;
 extern pros::ADIDigitalIn CataLimitSwitch;
 
 extern void ControllerDisplay();
-unsigned short int GamePhase;
+extern unsigned short int GamePhase;

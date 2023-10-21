@@ -76,7 +76,6 @@ void opcontrol(void);
 #include "global.hpp"
 #include "competition_initialize.hpp"
 #include "autonomous.hpp"
-#include "subsystemHeaders/catapult.hpp"
 #include "subsystemHeaders/drive.hpp"
 #include "subsystemHeaders/wings.hpp"
 //#include <iostream>

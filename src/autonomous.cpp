@@ -6,14 +6,18 @@ void drive(double length, int velocity) {
 	RMotors.move_relative(length, 200);
 }
 
+void turn(char direction, double length) {
+    turn(direction, length, 200);
+}
+
 //* The robot turns in the given direction at the given length
 void turn(char direction, double length, int velocity) {
     if (direction == 'L') {
-		LMotors.move_relative(length * -1, 200);
-		RMotors.move_relative(length, 200);
+		LMotors.move_relative(length * -1, velocity);
+		RMotors.move_relative(length, velocity);
     } else if (direction == 'R') {
-		LMotors.move_relative(length, 200);
-		RMotors.move_relative(length * -1, 200);
+		LMotors.move_relative(length, velocity);
+		RMotors.move_relative(length * -1, velocity);
     }
 }
 
@@ -30,16 +34,26 @@ void turn(char direction, double length, int velocity) {
  */
 void autonomous() {
 	GamePhase = 2;
+	autonSelect = 6;
+	// if (!pros::competition::is_connected) autonSelect = 1;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	Controller.clear();
 	switch (autonSelect) {
 		case 1:
+			Controller.print(0, 0, "Left Quals Auton");
+			turn('R', 0.2);
+			CatapultMotor.move_velocity(200);
+			pros::delay(150);
+			CatapultMotor.brake();
 			Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
 			Controller.print(0, 0, "Right Quals Auton");
-			Controller.print(0,0,"Auton Completed");
+			CatapultMotor.move_velocity(200);
+			pros::delay(150);
+			CatapultMotor.brake();
+			Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
 			Controller.print(0, 0, "Left Elims Auton");

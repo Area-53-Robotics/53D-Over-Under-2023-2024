@@ -18,6 +18,10 @@ void opcontrol() {
 		SetDriveMotors();	
 		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) DirectionToggle();
 		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) PneumaticWings();
+
+		if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) CatapultMotor.move(115);
+		else CatapultMotor.brake();
+		
 		pros::delay(20);
 	}
 }
