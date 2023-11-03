@@ -1,0 +1,36 @@
+name: Build PROS Project
+
+on:
+  push:
+    branches: '*'
+  pull_request:
+    branches: '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Install ARM Toolchain
+        uses: fiam/arm-none-eabi-gcc@v1
+        with:
+          release: '9-2019-q4'
+
+      - name: Setup Python
+        uses: actions/setup-python@v4.7.1
+        with:
+          python-version: '3.12'
+  
+      - name: PIP Install PROS CLI
+        uses: BSFishy/pip-action@v1
+        with:
+          packages: pros-cli
+  
+      - name: Test PROS Install 
+        run: pros --version
+
+      - name: Checkout
+        uses: actions/checkout@v4.1.1
+      
+      - name: Build PROS Project  
+        run: pros make clean all
