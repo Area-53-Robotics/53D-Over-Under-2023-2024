@@ -46,10 +46,8 @@ void autonomous() {
 	switch (autonSelect) {
 		case 1:
 			Controller.print(0, 0, "Left Quals Auton");
-			turn('R', 0.2);
-			CatapultMotor.move_velocity(200);
-			pros::delay(150);
-			CatapultMotor.brake();
+			drive(1.5, 150);
+			turn('L',90,150);
 			Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
