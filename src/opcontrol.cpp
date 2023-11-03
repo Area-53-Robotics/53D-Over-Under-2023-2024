@@ -23,6 +23,10 @@ void opcontrol() {
 		if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) CatapultMotor.move(115);
 		else CatapultMotor.brake();
 
+		if (Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) IntakeMotor.move(127);
+		else if (Controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) IntakeMotor.move(-127);
+		else IntakeMotor.brake();
+
 		pros::delay(20);
 	}
 }
