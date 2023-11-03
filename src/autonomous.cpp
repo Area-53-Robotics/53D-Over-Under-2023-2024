@@ -1,16 +1,20 @@
 #include "main.h"
 
 //* The robot drives the given length at the given velocity
-void drive(double length, int velocity) {
-	LMotors.move_relative(length, 200);
-	RMotors.move_relative(length, 200);
+void drive(double length) {
+	drive(length, 200);
 }
 
+void drive(double length, int velocity) {
+	LMotors.move_relative(length, velocity);
+	RMotors.move_relative(length, velocity);
+}
+
+//* The robot turns in the given direction at the given length
 void turn(char direction, double length) {
     turn(direction, length, 200);
 }
 
-//* The robot turns in the given direction at the given length
 void turn(char direction, double length, int velocity) {
     if (direction == 'L') {
 		LMotors.move_relative(length * -1, velocity);
