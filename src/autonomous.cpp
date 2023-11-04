@@ -25,6 +25,16 @@ void turn(char direction, double length, int velocity) {
     }
 }
 
+void AutonIntake(short int msec, bool isReverse) {
+	IntakeMotor.move_velocity(200);
+	pros::delay(msec);
+	IntakeMotor.brake();
+}
+
+void AutonCatapult() {
+	CatapultMotor.move_relative(360, 115);
+}
+
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -38,23 +48,32 @@ void turn(char direction, double length, int velocity) {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 6;
-	// if (!pros::competition::is_connected) autonSelect = 1;
+	autonSelect = 1;
+	if (!pros::competition::is_connected) autonSelect = 1;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	Controller.clear();
 	switch (autonSelect) {
 		case 1:
 			Controller.print(0, 0, "Left Quals Auton");
-			drive(1.5, 150);
-			turn('L',90,150);
+			turn('R', 0.2);
+			pros::delay(100);
+			AutonCatapult();
 			Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
 			Controller.print(0, 0, "Right Quals Auton");
-			CatapultMotor.move_velocity(200);
-			pros::delay(150);
-			CatapultMotor.brake();
+			drive(1);
+			pros::delay(100);
+			AutonIntake(1000, false);
+			pros::delay(100);
+			turn('R', 0.4);
+			pros::delay(100);
+			drive(0.5);
+			pros::delay(100);
+			AutonIntake(1000, true);
+			pros::delay(100);
+			drive(-0.5);
 			Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:

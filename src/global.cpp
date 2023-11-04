@@ -7,10 +7,10 @@ pros::Controller Controller(pros::E_CONTROLLER_MASTER);
     Best Battery: 13
 */
 
-pros::MotorGroup LMotors({-2, -15}, pros::v5::Motor_Gears::green);
-pros::MotorGroup RMotors({20, 8}, pros::v5::Motor_Gears::green);
+pros::MotorGroup LMotors({-17, -18}, pros::v5::Motor_Gears::green);
+pros::MotorGroup RMotors({15, 16}, pros::v5::Motor_Gears::green);
 
-pros::Motor CatapultMotor(9, pros::v5::Motor_Gears::red);
+pros::Motor CatapultMotor(-10, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
 pros::Motor IntakeMotor(1, pros::v5::Motor_Gears::blue);
 
 pros::adi::DigitalOut WingPistons(1);
@@ -21,7 +21,7 @@ void ControllerDisplay() {
 }
 
 /*
-*   Integer variable to represent the current game phase:
+*   Integer variable to represent the current game phase: 
     1: Pre-Autonomous
     2: Autonomous
     3: Driver Control
