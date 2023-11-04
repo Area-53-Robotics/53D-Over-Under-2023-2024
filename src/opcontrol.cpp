@@ -17,10 +17,10 @@ void opcontrol() {
 	while (true) {
 		SetDriveMotors();
 
-		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) DirectionToggle();
-		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) PneumaticWings();
+		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) DirectionToggle();
+		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) PneumaticWings();
 
-		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) CatapultMotor.move(115);
+		// if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) CatapultMotor.move(115);
 
 		if (Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) IntakeMotor.move(127);
 		else if (Controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) IntakeMotor.move(-127);

@@ -3,12 +3,12 @@
 pros::Controller Controller(pros::E_CONTROLLER_MASTER);
 
 /*
-    Dead Ports: 3, 4, 5, 7, 11, 12, 19
+    Dead Ports: 3, 4, 5, 7, 11, 12, 16, 19
     Best Battery: 13
 */
 
-pros::MotorGroup LMotors({-17, -18}, pros::v5::Motor_Gears::green);
-pros::MotorGroup RMotors({15, 16}, pros::v5::Motor_Gears::green);
+pros::MotorGroup LMotors({-18, -19}, pros::v5::Motor_Gears::blue);
+pros::MotorGroup RMotors({14, 15}, pros::v5::Motor_Gears::blue);
 
 pros::Motor CatapultMotor(-10, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
 pros::Motor IntakeMotor(1, pros::v5::Motor_Gears::blue);

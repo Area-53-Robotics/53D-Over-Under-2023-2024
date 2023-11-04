@@ -48,7 +48,7 @@ void AutonCatapult() {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 1;
+	autonSelect = 6;
 	if (!pros::competition::is_connected) autonSelect = 1;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
