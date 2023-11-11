@@ -8,7 +8,7 @@ pros::Controller Controller(pros::E_CONTROLLER_MASTER);
 */
 
 pros::MotorGroup LMotors({-18, -19}, pros::v5::Motor_Gears::blue);
-pros::MotorGroup RMotors({6, 7}, pros::v5::Motor_Gears::blue);
+pros::MotorGroup RMotors({6, 9}, pros::v5::Motor_Gears::blue);
 
 pros::Motor CatapultMotor(-20, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
 pros::Motor IntakeMotor(4, pros::v5::Motor_Gears::blue);
