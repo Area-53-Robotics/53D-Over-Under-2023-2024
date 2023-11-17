@@ -14,6 +14,7 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	// autonomous();
 	while (true) {
 		SetDriveMotors();
 

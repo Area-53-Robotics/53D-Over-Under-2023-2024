@@ -2,7 +2,7 @@
 
 //* The robot drives the given length at the given velocity
 void drive(double length) {
-	drive(length, 200);
+	drive(length, 600);
 }
 
 void drive(double length, int velocity) {
@@ -32,7 +32,8 @@ void AutonIntake(short int msec, bool isReverse) {
 }
 
 void AutonCatapult() {
-	CatapultMotor.move_relative(360, 115);
+	CatapultMotor1.move_relative(360, 115);
+	CatapultMotor2.move_relative(360, 115);
 }
 
 /**
@@ -48,17 +49,19 @@ void AutonCatapult() {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 6;
-	if (!pros::competition::is_connected) autonSelect = 1;
+	autonSelect = 1;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
-	Controller.clear();
+	pros::delay(500);
+	// Controller.clear();
+	Controller.print(0, 0, "Auton is Working");
+	LMotors.move_relative(1, 600);
+	/*
 	switch (autonSelect) {
 		case 1:
 			Controller.print(0, 0, "Left Quals Auton");
-			turn('R', 0.2);
-			pros::delay(100);
-			AutonCatapult();
+			drive(0.75, 200);
+			pros::delay(1000); 
 			Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
@@ -96,4 +99,5 @@ void autonomous() {
 			Controller.print(1, 0, "Skills Complete");
 			break;
 	}
+	*/
 }

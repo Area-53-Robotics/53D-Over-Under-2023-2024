@@ -7,11 +7,13 @@ pros::Controller Controller(pros::E_CONTROLLER_MASTER);
     Best Battery: 13
 */
 
-pros::MotorGroup LMotors({-18, -19}, pros::v5::Motor_Gears::blue);
-pros::MotorGroup RMotors({6, 9}, pros::v5::Motor_Gears::blue);
+pros::MotorGroup LMotors({-10, -9}, pros::v5::Motor_Gears::blue);
+pros::MotorGroup RMotors({18, 19}, pros::v5::Motor_Gears::blue);
 
-pros::Motor CatapultMotor(-20, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
-pros::Motor IntakeMotor(4, pros::v5::Motor_Gears::blue);
+pros::Motor CatapultMotor1(-20, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
+pros::Motor CatapultMotor2(8, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
+
+pros::Motor IntakeMotor(11, pros::v5::Motor_Gears::blue);
 
 pros::adi::DigitalOut WingPistons(1);
 

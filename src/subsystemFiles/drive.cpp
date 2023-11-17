@@ -23,7 +23,7 @@ void SetDriveMotors() {
     if (!isReverse) {
         LMotors.move(GetCurveOutput(LYAxis));
         RMotors.move(GetCurveOutput(RYAxis));
-    } else if(isReverse) {
+    } else if (isReverse) {
         LMotors.move(GetCurveOutput(RYAxis) * -1);
         RMotors.move(GetCurveOutput(LYAxis) * -1);
     }
