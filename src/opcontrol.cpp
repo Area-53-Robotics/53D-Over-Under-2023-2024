@@ -21,13 +21,10 @@ void opcontrol() {
 		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) DirectionToggle();
 		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) PneumaticWings();
 
-		if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) {
-			CatapultMotor1.move(115);
-			CatapultMotor2.move(115);
-		} else {
-			CatapultMotor1.brake();
-			CatapultMotor2.brake();
-		}
+		if (Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2)) cataMoving = !cataMoving;
+
+		if (cataMoving) CatapultMotors.move(127);
+		else CatapultMotors.brake();
 
 		if (Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) IntakeMotor.move(127);
 		else if (Controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) IntakeMotor.move(-127);

@@ -10,8 +10,7 @@ pros::Controller Controller(pros::E_CONTROLLER_MASTER);
 pros::MotorGroup LMotors({-10, -9}, pros::v5::Motor_Gears::blue);
 pros::MotorGroup RMotors({18, 19}, pros::v5::Motor_Gears::blue);
 
-pros::Motor CatapultMotor1(-20, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
-pros::Motor CatapultMotor2(8, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
+pros::MotorGroup CatapultMotors({-20, 8}, pros::v5::Motor_Gears::red, pros::v5::Motor_Encoder_Units::degrees);
 
 pros::Motor IntakeMotor(11, pros::v5::Motor_Gears::blue);
 
@@ -29,3 +28,5 @@ void ControllerDisplay() {
     3: Driver Control
 */
 unsigned short int GamePhase = 1;
+
+bool cataMoving = false;
