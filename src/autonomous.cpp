@@ -54,9 +54,6 @@ void autonomous() {
 	// setStartingOdomValues();
 	pros::delay(500);
 	// Controller.clear();
-	Controller.print(0, 0, "Auton is Working");
-	LMotors.move_relative(1, 600);
-	/*
 	switch (autonSelect) {
 		case 1:
 			Controller.print(0, 0, "Left Quals Auton");
@@ -99,5 +96,4 @@ void autonomous() {
 			Controller.print(1, 0, "Skills Complete");
 			break;
 	}
-	*/
 }

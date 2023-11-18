@@ -3,7 +3,7 @@
 pros::Controller Controller(pros::E_CONTROLLER_MASTER);
 
 /*
-    Dead Ports: 3, 5, 7, 11, 12, 16, 19
+    Dead Ports: 5, 17 (last updated 11/17/23)
     Best Battery: 13
 */
 
