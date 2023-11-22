@@ -32,7 +32,7 @@ void AutonIntake(short int msec, bool isReverse) {
 }
 
 void AutonCatapult() {
-	CatapultMotors.move_relative(360, 115);
+	CataMotors.move_relative(360, 115);
 }
 
 /**

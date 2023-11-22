@@ -28,7 +28,7 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 
-	CatapultMotors.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	CataMotors.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
 /**
