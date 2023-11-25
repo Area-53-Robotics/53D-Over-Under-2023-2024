@@ -74,8 +74,8 @@ void opcontrol(void);
 #ifdef __cplusplus
 #include "liblvgl/lvgl.h"
 #include "global.hpp"
-#include "competition_initialize.hpp"
 #include "autonomous.hpp"
+#include "subsystemHeaders/catapult.hpp"
 #include "subsystemHeaders/drive.hpp"
 #include "subsystemHeaders/wings.hpp"
 //#include <iostream>

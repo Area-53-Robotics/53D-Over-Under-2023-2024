@@ -33,4 +33,4 @@ jobs:
         uses: actions/checkout@v4.1.1
       
       - name: Build PROS Project  
-        run: pros build-compile-commands
+        run: pros make clean all

@@ -17,7 +17,10 @@ extern pros::Motor IntakeMotor;
 
 extern pros::adi::DigitalOut WingPistons;
 
+extern pros::Rotation CataSensor;
+
 extern void ControllerDisplay();
 
+extern unsigned short int autonSelect;
 extern unsigned short int GamePhase;
 extern bool cataMoving;

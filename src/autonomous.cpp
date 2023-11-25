@@ -5,17 +5,17 @@ void drive(double length) {
 	drive(length, 600);
 }
 
-void drive(double length, int velocity) {
+void drive(double length, unsigned short int velocity) {
 	LMotors.move_relative(length, velocity);
 	RMotors.move_relative(length, velocity);
 }
 
 //* The robot turns in the given direction at the given length
 void turn(char direction, double length) {
-    turn(direction, length, 200);
+    turn(direction, length, 600);
 }
 
-void turn(char direction, double length, int velocity) {
+void turn(char direction, double length, unsigned short int velocity) {
     if (direction == 'L') {
 		LMotors.move_relative(length * -1, velocity);
 		RMotors.move_relative(length, velocity);
@@ -25,7 +25,7 @@ void turn(char direction, double length, int velocity) {
     }
 }
 
-void AutonIntake(short int msec, bool isReverse) {
+void AutonIntake(unsigned short int msec, bool isReverse) {
 	IntakeMotor.move_velocity(200);
 	pros::delay(msec);
 	IntakeMotor.brake();
@@ -56,7 +56,7 @@ void autonomous() {
 	switch (autonSelect) {
 		case 1:
 			Controller.print(0, 0, "Left Quals Auton");
-			drive(0.75, 200);
+			drive(0.75);
 			pros::delay(1000); 
 			Controller.print(1, 0, "Auton Completed");
 			break;

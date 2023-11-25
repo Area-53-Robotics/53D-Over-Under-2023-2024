@@ -1,1 +1,0 @@
-extern unsigned short int autonSelect;

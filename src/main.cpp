@@ -28,6 +28,7 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 
+	pros::Task CataTask(runCatapult);
 	CataMotors.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 }
 
@@ -37,3 +38,14 @@ void initialize() {
  * the robot is enabled, this task will exit.
  */
 void disabled() {}
+
+/**
+ * Runs after initialize(), and before autonomous when connected to the Field
+ * Management System or the VEX Competition Switch. This is intended for
+ * competition-specific initialization routines, such as an autonomous selector
+ * on the LCD.
+ *
+ * This task will exit when the robot is enabled and autonomous or opcontrol
+ * starts.
+ */
+void competition_initialize() {}

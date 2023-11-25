@@ -24,10 +24,23 @@ pros::Motor IntakeMotor(11, pros::v5::MotorGears::blue);
 
 pros::adi::DigitalOut WingPistons(1);
 
+pros::Rotation CataSensor(1);
+
 void ControllerDisplay() {
     if(!isReverse) Controller.print(0, 0, "Reversed: false");
     else if(isReverse) Controller.print(0, 0, "Reversed: true");
 }
+
+/*
+    1: Left Quals
+    2: Right Quals
+    3: Left Elims
+    4: Right Elims
+    5: Full Autonomous Win Point
+    6: No Auton
+    7: Programming Skills
+*/
+unsigned short int autonSelect;
 
 /*
 *   Integer variable to represent the current game phase: 
