@@ -11,21 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: Get short SHA
-      uses: benjlevesque/short-sha@v2.2
-      id: short-sha
-      with:
-        length: 6
-    
-    - name: Set short SHA
-      run: echo $SHA
-      env:
-        SHA: ${{ steps.short-sha.outputs.sha }}
-
     - name: Install ARM Toolchain
       uses: fiam/arm-none-eabi-gcc@v1
       with:
-        release: '9-2019-q4'
+        release: '10-2019-q4'
 
     - name: Setup Python
       uses: actions/setup-python@v4.7.1
@@ -43,14 +32,5 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4.1.1
     
-    - name: Get version number
-      id: get-version
-      run: |
-        version=$(awk -F'=' '/^VERSION:=/{print $2}' Makefile)
-        echo "version=$version" >> "$GITHUB_OUTPUT"
-
-    - name: Update version in Makefile
-      run: sed -i "s/^VERSION:=.*\$/VERSION:=${{ steps.get-version.outputs.version }}-c${{ env.SHA }}/" Makefile
-
     - name: Build PROS Project  
       run: pros make clean all
