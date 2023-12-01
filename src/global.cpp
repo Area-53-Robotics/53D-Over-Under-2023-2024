@@ -3,7 +3,7 @@
 pros::Controller Controller(pros::E_CONTROLLER_MASTER);
 
 /*
-    Dead Ports: 5, 17 (last updated 11/17/23)
+    Dead Ports: 5, 16, 17 (last updated 12/1/23)
     Best Battery: 13
 */
 
@@ -24,6 +24,9 @@ pros::Motor IntakeMotor(11, pros::v5::MotorGears::blue);
 
 pros::adi::DigitalOut WingPistons(1);
 
+std::array<std::string,7> MotorNameList = {"BL", "FL", "BR", "FR", "Cata1", "Cata2", "Intake"};
+std::array<pros::Motor,7> MotorObjectList = {BLMotor, FLMotor, BRMotor, FRMotor, CataMotor1, CataMotor2, IntakeMotor};
+
 pros::Rotation CataSensor(1);
 
 void ControllerDisplay() {
@@ -40,7 +43,7 @@ void ControllerDisplay() {
     6: No Auton
     7: Programming Skills
 */
-unsigned short int autonSelect;
+unsigned short int autonSelect = 6;
 
 /*
 *   Integer variable to represent the current game phase: 

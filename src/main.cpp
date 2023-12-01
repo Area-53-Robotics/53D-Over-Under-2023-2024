@@ -30,6 +30,14 @@ void initialize() {
 
 	pros::Task CataTask(runCatapult);
 	CataMotors.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+
+	/*
+	CreateMenuDropdown();
+    OpenAutonSelectMenu();
+	while(1) {
+		pros::delay(20);  
+	}
+	*/
 }
 
 /**
@@ -48,4 +56,7 @@ void disabled() {}
  * This task will exit when the robot is enabled and autonomous or opcontrol
  * starts.
  */
-void competition_initialize() {}
+void competition_initialize() {
+	CreateMenuDropdown();
+    OpenAutonSelectMenu();
+}

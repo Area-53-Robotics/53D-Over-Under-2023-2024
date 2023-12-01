@@ -75,6 +75,7 @@ void opcontrol(void);
 #include "liblvgl/lvgl.h"
 #include "global.hpp"
 #include "autonomous.hpp"
+#include "autonSelector.hpp"
 #include "subsystemHeaders/catapult.hpp"
 #include "subsystemHeaders/drive.hpp"
 #include "subsystemHeaders/wings.hpp"

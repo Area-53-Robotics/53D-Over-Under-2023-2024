@@ -19,6 +19,9 @@ extern pros::adi::DigitalOut WingPistons;
 
 extern pros::Rotation CataSensor;
 
+extern std::array<std::string,7> MotorNameList;
+extern std::array<pros::Motor,7> MotorObjectList;
+
 extern void ControllerDisplay();
 
 extern unsigned short int autonSelect;
