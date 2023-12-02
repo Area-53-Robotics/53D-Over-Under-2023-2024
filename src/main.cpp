@@ -23,13 +23,17 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
+	/*
 	pros::lcd::initialize();
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+	*/
 
 	pros::Task CataTask(runCatapult);
 	CataMotors.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	CataSensor.reset();
+	Controller.clear();
 
 	/*
 	CreateMenuDropdown();

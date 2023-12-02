@@ -16,9 +16,9 @@ pros::MotorGroup LMotors({-10, -9}, pros::v5::MotorGears::blue);
 pros::MotorGroup RMotors({18, 19}, pros::v5::MotorGears::blue);
 
 pros::Motor CataMotor1(-20, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
-pros::Motor CataMotor2(8, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
+pros::Motor CataMotor2(3, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
 
-pros::MotorGroup CataMotors({-20, 8}, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
+pros::MotorGroup CataMotors({-20, 3}, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
 
 pros::Motor IntakeMotor(11, pros::v5::MotorGears::blue);
 
@@ -27,11 +27,14 @@ pros::adi::DigitalOut WingPistons(1);
 std::array<std::string,7> MotorNameList = {"BL", "FL", "BR", "FR", "Cata1", "Cata2", "Intake"};
 std::array<pros::Motor,7> MotorObjectList = {BLMotor, FLMotor, BRMotor, FRMotor, CataMotor1, CataMotor2, IntakeMotor};
 
-pros::Rotation CataSensor(1);
+pros::Rotation CataSensor(4);
 
 void ControllerDisplay() {
     if(!isReverse) Controller.print(0, 0, "Reversed: false");
     else if(isReverse) Controller.print(0, 0, "Reversed: true");
+    pros::delay(50);
+    if (manualCata) Controller.print(1, 0, "Catapult: Manual");
+    else if (!manualCata) Controller.print(1, 0, "Catapult: Auto");
 }
 
 /*
@@ -52,5 +55,3 @@ unsigned short int autonSelect = 6;
     3: Driver Control
 */
 unsigned short int GamePhase = 1;
-
-bool cataMoving = false;

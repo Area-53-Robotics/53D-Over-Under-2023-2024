@@ -10,19 +10,19 @@ void OpenKeybindMenu() {
     lv_obj_t * label = lv_obj_get_child(menuRectangle, 0);
 
     lv_label_set_text(label,
-                    "Last Updated: 11/19/23\n"
+                    "Last Updated: 12/1/23\n"
                     "-----------------------------------------------------\n"
                     "A: Toggle Direction\n"
-                    "B:\n"
+                    "B: Toggle Cata Control Mode\n"
                     "X:\n"
                     "Y:\n"
                     "Up:\n"
                     "Down:\n"
                     "Left: Open/Close Wings\n"
                     "Right:\n"
-                    "L1: Outtake\n"
-                    "L2:\n"
-                    "R1: Intake\n"
-                    "R2: Start/Stop Cata Movement"
+                    "L1: Intake\n"
+                    "L2: Outtake\n"
+                    "R1:\n"
+                    "R2: Lower/Fire Catapult"
     );
 }

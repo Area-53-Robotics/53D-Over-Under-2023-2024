@@ -26,4 +26,3 @@ extern void ControllerDisplay();
 
 extern unsigned short int autonSelect;
 extern unsigned short int GamePhase;
-extern bool cataMoving;

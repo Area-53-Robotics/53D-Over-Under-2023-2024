@@ -6,6 +6,7 @@ void drive(double length) {
 }
 
 void drive(double length, unsigned short int velocity) {
+	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
 	LMotors.move_relative(length, velocity);
 	RMotors.move_relative(length, velocity);
 }
@@ -16,6 +17,7 @@ void turn(char direction, double length) {
 }
 
 void turn(char direction, double length, unsigned short int velocity) {
+	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
     if (direction == 'L') {
 		LMotors.move_relative(length * -1, velocity);
 		RMotors.move_relative(length, velocity);
@@ -51,8 +53,8 @@ void autonomous() {
 	autonSelect = 1;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
-	pros::delay(500);
-	// Controller.clear();
+	// pros::delay(500);
+	Controller.clear();
 	switch (autonSelect) {
 		case 1:
 			Controller.print(0, 0, "Left Quals Auton");

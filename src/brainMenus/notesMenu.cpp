@@ -12,6 +12,12 @@ void OpenNotesMenu() {
     lv_label_set_text(label,
                     "Last Updated: 11/19/23\n"
                     "-----------------------------------------------------\n"
-                    "- Don't sell Makhi"
+                    "- Don't sell Makhi\n\n"
+                    "Makhi Rules:"
+                    "1. No using the pneumatic wings with drinks on the table.\n"
+                    "2. No acting crazy so that teams don't think you're high.\n"
+                    "3. No exaggerating the truth to judges\n"
+                    "4. Let others speak so we show teamwork\n"
+                    "5. No breaking the bot, especially not by sitting on it"
     );
 }
