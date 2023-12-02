@@ -27,10 +27,10 @@ void runCatapult() {
             if (Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) CataMotors.move(100);
             else CataMotors.brake();
         } else if(!manualCata) {
-            if (cataPosition > 5) cataStatus = 1;
+            if (cataPosition > 10) cataStatus = 1;
 
             if(cataStatus == 1) {
-                if (cataPosition > 5) CataMotors.move(100);
+                if (cataPosition > 10) CataMotors.move(100);
                 else cataStatus = 2;
             }
 

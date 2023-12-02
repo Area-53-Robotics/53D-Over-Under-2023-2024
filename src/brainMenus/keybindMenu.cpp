@@ -21,7 +21,7 @@ void OpenKeybindMenu() {
                     "Down:\n"
                     "Left: Open/Close Wings\n"
                     "Right:\n"
-                    "L1: Intake\n"
+                    "L1: Intake\n" 
                     "L2: Outtake\n"
                     "R1:\n"
                     "R2: Lower/Fire Catapult"

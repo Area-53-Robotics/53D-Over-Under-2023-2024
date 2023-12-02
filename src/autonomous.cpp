@@ -52,9 +52,15 @@ void AutonTurn(char direction, double length, unsigned short int delay) {
 // Temporary Drivetrain Auton Functions
 
 void AutonIntake(unsigned short int msec, bool isReverse) {
-	IntakeMotor.move_velocity(200);
-	pros::delay(msec);
-	IntakeMotor.brake();
+	if(!isReverse) {
+		IntakeMotor.move_velocity(200);
+		pros::delay(msec);
+		IntakeMotor.brake();
+	} else if(isReverse) {
+		IntakeMotor.move_velocity(-200);
+		pros::delay(msec);
+		IntakeMotor.brake();
+	}
 }
 
 void AutonCatapult() {
@@ -74,7 +80,7 @@ void AutonCatapult() {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 1;
+	autonSelect = 2;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
@@ -82,22 +88,31 @@ void autonomous() {
 	switch (autonSelect) {
 		case 1:
 			// Controller.print(0, 0, "Left Quals Auton");
-			AutonDrive(1, 1000);
+			FireCatapult();
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
-			drive(1);
-			pros::delay(100);
-			AutonIntake(1000, false);
-			pros::delay(100);
-			turn('R', 0.4);
-			pros::delay(100);
-			drive(0.5);
-			pros::delay(100);
+			AutonDrive(4, 2000);
 			AutonIntake(1000, true);
-			pros::delay(100);
-			drive(-0.5);
+			AutonDrive(1, 2000);
+			AutonDrive(-1, 2000);
+			/*
+			AutonDrive(, 400, 2000);
+			PneumaticWings();
+			AutonTurn('R', 1.5, 400, 1500);
+			AutonDrive(1, 400, 1000);
+			AutonIntake(1500, true);
+			AutonDrive(-1, 400, 1000);
+			AutonTurn('R', 3, 400, 1500);
+			IntakeMotor.move(127);
+			AutonDrive(1, 400, 1000);
+			IntakeMotor.brake();
+			AutonTurn('L', 3, 400, 1500);
+			AutonDrive(1, 400, 1000);
+			AutonIntake(1000, true);
+			AutonDrive(-1, 400, 1000);
+			*/
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:

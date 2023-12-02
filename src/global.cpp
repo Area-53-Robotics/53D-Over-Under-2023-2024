@@ -25,7 +25,7 @@ pros::MotorGroup CataMotors({-20, 3}, pros::v5::MotorGears::red, pros::v5::Motor
 
 pros::Motor IntakeMotor(11, pros::v5::MotorGears::blue);
 
-pros::adi::DigitalOut WingPistons(1);
+pros::adi::DigitalOut WingPistons(2);
 
 std::array<std::string,7> MotorNameList = {"BL", "FL", "BR", "FR", "Cata1", "Cata2", "Intake"};
 std::array<pros::Motor,7> MotorObjectList = {BLMotor, FLMotor, BRMotor, FRMotor, CataMotor1, CataMotor2, IntakeMotor};
@@ -49,7 +49,7 @@ void ControllerDisplay() {
     6: No Auton
     7: Programming Skills
 */
-unsigned short int autonSelect = 6;
+unsigned short int autonSelect = 2;
 
 /*
 *   Integer variable to represent the current game phase: 

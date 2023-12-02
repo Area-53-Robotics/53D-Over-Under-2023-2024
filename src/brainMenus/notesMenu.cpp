@@ -14,7 +14,7 @@ void OpenNotesMenu() {
                     "Last Updated: 11/19/23\n"
                     "-----------------------------------------------------\n"
                     "- Don't sell Makhi\n\n"
-                    "Makhi Rules:"
+                    "Makhi Rules:\n"
                     "1. No using the pneumatic wings with drinks on the table.\n"
                     "2. No acting crazy so that teams don't think you're high.\n"
                     "3. No exaggerating the truth to judges\n"

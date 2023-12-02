@@ -257,7 +257,8 @@
     },
     "upload_options": {
       "icon": "alien",
-      "description": "53D's program for the 2023-24 VRC Over Under challenge."
+      "description": "53D's program for the 2023-24 VRC Over Under challenge.",
+      "slot": 1
     }
   }
 }
