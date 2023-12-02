@@ -1,5 +1,3 @@
-#include "main.h"
-
 // Globals
 extern unsigned short int autonSelect;
 extern lv_obj_t * menuRectangle;

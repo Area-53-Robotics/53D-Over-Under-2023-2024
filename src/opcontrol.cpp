@@ -14,7 +14,8 @@
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	// if(!pros::competition::is_connected) autonomous();
+	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
+	// autonomous();
 	ControllerDisplay();
 	while (true) {
 		SetDriveMotors();

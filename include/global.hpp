@@ -7,6 +7,9 @@ extern pros::Motor FRMotor;
 
 extern pros::MotorGroup LMotors;
 extern pros::MotorGroup RMotors;
+extern pros::MotorGroup Drivetrain;
+extern pros::MotorGroup LTDrivetrain;
+extern pros::MotorGroup RTDrivetrain;
 
 extern pros::Motor CataMotor1;
 extern pros::Motor CataMotor2;

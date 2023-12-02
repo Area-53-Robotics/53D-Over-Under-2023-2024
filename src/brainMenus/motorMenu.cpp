@@ -1,3 +1,5 @@
+#include "liblvgl\lvgl.h"
+#include "autonSelector.hpp"
 #include "main.h"
 
 lv_obj_t * motorScr = lv_obj_create(NULL);

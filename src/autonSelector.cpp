@@ -1,4 +1,5 @@
-#include "main.h"
+#include "liblvgl\lvgl.h"
+#include "autonSelector.hpp"
 
 lv_obj_t * menuRectangle;
 

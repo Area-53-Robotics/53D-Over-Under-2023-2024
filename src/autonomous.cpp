@@ -7,8 +7,8 @@ void drive(double length) {
 
 void drive(double length, unsigned short int velocity) {
 	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
-	LMotors.move_relative(length, velocity);
-	RMotors.move_relative(length, velocity);
+	Drivetrain.move_relative(length, velocity);
+	while(Drivetrain.get_actual_velocity(1) > 0) pros::delay(1);
 }
 
 //* The robot turns in the given direction at the given length
@@ -26,6 +26,30 @@ void turn(char direction, double length, unsigned short int velocity) {
 		RMotors.move_relative(length * -1, velocity);
     }
 }
+
+// Temporary Drivetrain Auton Functions
+void AutonDrive(double length, unsigned short int velocity, unsigned short int delay) {
+	Drivetrain.move_relative(length, velocity);
+	pros::delay(delay);
+}
+
+void AutonDrive(double length, unsigned short int delay) {
+	AutonDrive(length, 600, delay);
+}
+
+void AutonTurn(char direction, double length, unsigned short int velocity, unsigned short int delay) {
+    if (direction == 'L') {
+		LTDrivetrain.move_relative(length, velocity);
+    } else if (direction == 'R') {
+		RTDrivetrain.move_relative(length, velocity);
+    }
+	pros::delay(delay);
+}
+
+void AutonTurn(char direction, double length, unsigned short int delay) {
+	AutonTurn(direction, length, 600, delay);
+}
+// Temporary Drivetrain Auton Functions
 
 void AutonIntake(unsigned short int msec, bool isReverse) {
 	IntakeMotor.move_velocity(200);
@@ -54,16 +78,15 @@ void autonomous() {
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
-	Controller.clear();
+	// Controller.clear();
 	switch (autonSelect) {
 		case 1:
-			Controller.print(0, 0, "Left Quals Auton");
-			drive(0.75);
-			pros::delay(1000); 
-			Controller.print(1, 0, "Auton Completed");
+			// Controller.print(0, 0, "Left Quals Auton");
+			AutonDrive(1, 1000);
+			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
-			Controller.print(0, 0, "Right Quals Auton");
+			// Controller.print(0, 0, "Right Quals Auton");
 			drive(1);
 			pros::delay(100);
 			AutonIntake(1000, false);
@@ -75,26 +98,26 @@ void autonomous() {
 			AutonIntake(1000, true);
 			pros::delay(100);
 			drive(-0.5);
-			Controller.print(1, 0, "Auton Completed");
+			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
-			Controller.print(0, 0, "Left Elims Auton");
-			Controller.print(1, 0, "Auton Completed");
+			// Controller.print(0, 0, "Left Elims Auton");
+			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 4:
-			Controller.print(0, 0, "Right Elims Auton");
-			Controller.print(1, 0, "Auton Completed");
+			// Controller.print(0, 0, "Right Elims Auton");
+			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 5:
-			Controller.print(0, 0, "Full AWP");
-			Controller.print(1, 0, "Auton Completed");
+			// Controller.print(0, 0, "Full AWP");
+			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 6:
-			Controller.print(0, 0, "No Auton Selected");
+			// Controller.print(0, 0, "No Auton Selected");
 			break;
 		case 7:
-			Controller.print(0, 0, "Programming Skills");
-			Controller.print(1, 0, "Skills Complete");
+			// Controller.print(0, 0, "Programming Skills");
+			// Controller.print(1, 0, "Skills Complete");
 			break;
 	}
 }
