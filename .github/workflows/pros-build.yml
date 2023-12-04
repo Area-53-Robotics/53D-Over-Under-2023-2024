@@ -29,11 +29,11 @@ jobs:
     - name: Test PROS Install 
       run: pros --version
 
-    - name: Verify Template Installations
-      run: pros c info-project
-
     - name: Checkout
       uses: actions/checkout@v4.1.1
+
+    - name: Verify Template Installations
+      run: pros c info-project
     
     - name: Build PROS Project  
-      run: pros build-compile-commands
+      run: pros make clean all
