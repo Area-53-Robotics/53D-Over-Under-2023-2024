@@ -28,26 +28,26 @@ void turn(char direction, double length, unsigned short int velocity) {
 }
 
 // Temporary Drivetrain Auton Functions
-void AutonDrive(double length, unsigned short int velocity, unsigned short int delay) {
+void AutonDrive(double length, unsigned short int delay, unsigned short int velocity) {
 	Drivetrain.move_relative(length, velocity);
 	pros::delay(delay);
 }
 
 void AutonDrive(double length, unsigned short int delay) {
-	AutonDrive(length, 600, delay);
+	AutonDrive(length, delay, 600);
 }
 
-void AutonTurn(char direction, double length, unsigned short int velocity, unsigned short int delay) {
+void AutonTurn(char direction, double length,  unsigned short int delay, unsigned short int velocity) {
     if (direction == 'L') {
 		LTDrivetrain.move_relative(length, velocity);
     } else if (direction == 'R') {
-		RTDrivetrain.move_relative(length, velocity);
+		LTDrivetrain.move_relative(length, velocity * -1);
     }
 	pros::delay(delay);
 }
 
 void AutonTurn(char direction, double length, unsigned short int delay) {
-	AutonTurn(direction, length, 600, delay);
+	AutonTurn(direction, length, delay, 600);
 }
 // Temporary Drivetrain Auton Functions
 
@@ -80,7 +80,7 @@ void AutonCatapult() {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 2;
+	autonSelect = 1;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
@@ -88,7 +88,10 @@ void autonomous() {
 	switch (autonSelect) {
 		case 1:
 			// Controller.print(0, 0, "Left Quals Auton");
-			FireCatapult();
+			AutonDrive(4.3, 2000, 450);
+			AutonIntake(1000, true);
+			AutonDrive(-1, 2000, 450);
+			AutonTurn('R', 2.25, 400);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
@@ -97,22 +100,6 @@ void autonomous() {
 			AutonIntake(1000, true);
 			AutonDrive(1, 2000);
 			AutonDrive(-1, 2000);
-			/*
-			AutonDrive(, 400, 2000);
-			PneumaticWings();
-			AutonTurn('R', 1.5, 400, 1500);
-			AutonDrive(1, 400, 1000);
-			AutonIntake(1500, true);
-			AutonDrive(-1, 400, 1000);
-			AutonTurn('R', 3, 400, 1500);
-			IntakeMotor.move(127);
-			AutonDrive(1, 400, 1000);
-			IntakeMotor.brake();
-			AutonTurn('L', 3, 400, 1500);
-			AutonDrive(1, 400, 1000);
-			AutonIntake(1000, true);
-			AutonDrive(-1, 400, 1000);
-			*/
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
