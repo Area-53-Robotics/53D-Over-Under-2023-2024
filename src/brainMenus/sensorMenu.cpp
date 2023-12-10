@@ -1,6 +1,6 @@
-#include "liblvgl\lvgl.h"
+#include "liblvgl/lvgl.h"
 #include "autonSelector.hpp"
-#include "pros\misc.hpp"
+#include "pros/misc.hpp"
 
 lv_obj_t * sensorScr = lv_obj_create(NULL);
 

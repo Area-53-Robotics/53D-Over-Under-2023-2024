@@ -1,4 +1,4 @@
-#include "liblvgl\lvgl.h"
+#include "liblvgl/lvgl.h"
 #include "autonSelector.hpp"
 #include "main.h"
 
