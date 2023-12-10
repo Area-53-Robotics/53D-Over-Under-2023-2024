@@ -3,20 +3,20 @@
 pros::Controller Controller(pros::E_CONTROLLER_MASTER);
 
 /*
-    Dead Ports: 5, 16, 17 (last updated 12/1/23)
+    Dead Ports: 5, 10, 16, 17 (last updated 12/9/23)
     Best Battery: 13
 */
 
-pros::Motor BLMotor(-10, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::Motor BLMotor(-8, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 pros::Motor FLMotor(-9, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 pros::Motor BRMotor(18, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 pros::Motor FRMotor(19, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 
-pros::MotorGroup LMotors({-10, -9}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::MotorGroup LMotors({-8, -9}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 pros::MotorGroup RMotors({18, 19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
-pros::MotorGroup Drivetrain({-10, -9, 18, 19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
-pros::MotorGroup LTDrivetrain({-10, -9, -18, -19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
-pros::MotorGroup RTDrivetrain({10, 9, 18, 19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::MotorGroup Drivetrain({-8, -9, 18, 19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::MotorGroup LTDrivetrain({-8, -9, -18, -19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::MotorGroup RTDrivetrain({8, 9, 18, 19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 
 pros::Motor CataMotor1(-20, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
 pros::Motor CataMotor2(3, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);

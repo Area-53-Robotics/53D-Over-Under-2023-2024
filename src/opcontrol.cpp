@@ -15,7 +15,7 @@
  */
 void opcontrol() {
 	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
-	// autonomous();
+	autonomous();
 	manualCata = true;
 	ControllerDisplay();
 	while (true) {

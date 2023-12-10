@@ -11,7 +11,7 @@ unsigned short int cataStatus = 2;
 double cataPosition = CataSensor.get_position() / 100;
 double cataVelocity = CataSensor.get_velocity() * 100;
 
-bool manualCata = true;
+bool manualCata = false;
 bool cataMoving = false;
 
 void runCatapult() {

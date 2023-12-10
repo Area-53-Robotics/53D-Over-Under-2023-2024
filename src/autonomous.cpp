@@ -65,6 +65,7 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
 
 void AutonCatapult() {
 	CataMotors.move_relative(360, 115);
+	pros::delay(500);
 }
 
 /**
@@ -80,7 +81,7 @@ void AutonCatapult() {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 1;
+	autonSelect = 3;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
@@ -96,6 +97,7 @@ void autonomous() {
 			break;
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
+			// Pushes triball
 			AutonDrive(4, 2000);
 			AutonIntake(1000, true);
 			AutonDrive(1, 2000);
@@ -104,6 +106,10 @@ void autonomous() {
 			break;
 		case 3:
 			// Controller.print(0, 0, "Left Elims Auton");
+			AutonDrive(-3, 2000, 300);
+			AutonTurn('R', 0.2, 2000);
+			FireCatapult();
+			std::cout << "Cata Fired" << std::endl;
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 4:
