@@ -81,7 +81,7 @@ void AutonCatapult() {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 3;
+	autonSelect = 2;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
@@ -89,19 +89,25 @@ void autonomous() {
 	switch (autonSelect) {
 		case 1:
 			// Controller.print(0, 0, "Left Quals Auton");
-			AutonDrive(4.3, 2000, 450);
+			AutonDrive(8, 2000);
+			AutonTurn('R', 5, 2000);
+			AutonDrive(1, 2000);
 			AutonIntake(1000, true);
-			AutonDrive(-1, 2000, 450);
-			AutonTurn('R', 2.25, 400);
+			AutonDrive(-1, 2000);
+			AutonDrive(1, 2000);
+			AutonDrive(-1, 2000);
+			AutonTurn('R', 1, 2000);
+			AutonDrive(-5, 2000);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
-			AutonDrive(4, 2000);
-			AutonIntake(1000, true);
+			AutonDrive(8, 2000);
+			AutonTurn('R', 1.5, 2000);
 			AutonDrive(1, 2000);
-			AutonDrive(-1, 2000);
+			AutonIntake(1000, true);
+			AutonDrive(-1.5, 2000);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
