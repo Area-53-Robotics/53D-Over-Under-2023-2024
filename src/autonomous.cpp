@@ -76,7 +76,7 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 2;
+	autonSelect = 1;
 	// if (pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
