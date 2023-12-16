@@ -18,17 +18,15 @@ pros::MotorGroup Drivetrain({-8, -9, 18, 19}, pros::v5::MotorGears::blue, pros::
 pros::MotorGroup LTDrivetrain({-8, -9, -18, -19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 pros::MotorGroup RTDrivetrain({8, 9, 18, 19}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 
-pros::Motor CataMotor1(-20, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
-pros::Motor CataMotor2(3, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
-
-pros::MotorGroup CataMotors({-20, 3}, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
+pros::Motor FlywheelMotor(15, pros::v5::MotorGears::blue, pros::v5::MotorUnits::degrees);
+pros::Motor ArmMotor(7, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
 
 pros::Motor IntakeMotor(11, pros::v5::MotorGears::blue);
 
 pros::adi::DigitalOut WingPistons(2);
 
-std::array<std::string,7> MotorNameList = {"BL", "FL", "BR", "FR", "Cata1", "Cata2", "Intake"};
-std::array<pros::Motor,7> MotorObjectList = {BLMotor, FLMotor, BRMotor, FRMotor, CataMotor1, CataMotor2, IntakeMotor};
+std::array<std::string,7> MotorNameList = {"BL", "FL", "BR", "FR", "Arm", "Flywheel", "Intake"};
+std::array<pros::Motor,7> MotorObjectList = {BLMotor, FLMotor, BRMotor, FRMotor, ArmMotor, FlywheelMotor, IntakeMotor};
 
 pros::Rotation CataSensor(4);
 
@@ -36,8 +34,6 @@ void ControllerDisplay() {
     if(!isReverse) Controller.print(0, 0, "Reversed: false");
     else if(isReverse) Controller.print(0, 0, "Reversed: true");
     pros::delay(50);
-    if (manualCata) Controller.print(1, 0, "Catapult: Manual");
-    else if (!manualCata) Controller.print(1, 0, "Catapult: Auto");
 }
 
 /*
