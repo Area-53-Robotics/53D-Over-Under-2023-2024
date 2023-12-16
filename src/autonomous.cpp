@@ -107,7 +107,7 @@ void autonomous() {
 			AutonDrive(3.5, 1600);
 			AutonIntake(1000, false);
 			AutonTurn('R',3.2,1600);
-			AutonDrive(3.5, 1600);
+			AutonDrive(3.3, 1600);
 			AutonIntake(1000, true);
 			AutonDrive(0.5, 1600);
 
