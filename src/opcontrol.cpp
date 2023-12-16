@@ -15,19 +15,25 @@
  */
 void opcontrol() {
 	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
-	autonomous();
-	manualCata = true;
+	// autonomous();
 	ControllerDisplay();
 	while (true) {
 		SetDriveMotors();
 
 		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A)) DirectionToggle();
-		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B)) SwitchCatapultMode();
 		if(Controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT)) PneumaticWings();
 
 		if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1)) IntakeMotor.move(127);
 		else if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2)) IntakeMotor.move(-127);
 		else IntakeMotor.brake();
+
+		if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1)) FlywheelMotor.move(127);
+		else if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2)) FlywheelMotor.move(-127);
+		else FlywheelMotor.brake();
+
+		if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) ArmMotor.move(100);
+		else if(Controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) ArmMotor.move(-100);
+		else ArmMotor.brake();
 
 		pros::delay(20);
 	}

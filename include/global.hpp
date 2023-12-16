@@ -11,10 +11,8 @@ extern pros::MotorGroup Drivetrain;
 extern pros::MotorGroup LTDrivetrain;
 extern pros::MotorGroup RTDrivetrain;
 
-extern pros::Motor CataMotor1;
-extern pros::Motor CataMotor2;
-
-extern pros::MotorGroup CataMotors;
+extern pros::Motor FlywheelMotor;
+extern pros::Motor ArmMotor;
 
 extern pros::Motor IntakeMotor;
 

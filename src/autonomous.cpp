@@ -63,11 +63,6 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
 	}
 }
 
-void AutonCatapult() {
-	CataMotors.move_relative(360, 115);
-	pros::delay(500);
-}
-
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -108,7 +103,6 @@ void autonomous() {
 			// Controller.print(0, 0, "Left Elims Auton");
 			AutonDrive(-3, 2000, 300);
 			AutonTurn('R', 0.2, 2000);
-			FireCatapult();
 			std::cout << "Cata Fired" << std::endl;
 			// Controller.print(1, 0, "Auton Completed");
 			break;
