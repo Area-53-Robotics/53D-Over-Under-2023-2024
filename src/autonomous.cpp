@@ -98,14 +98,19 @@ void autonomous() {
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
-			AutonDrive(7.5, 2000);
-			AutonTurn('R', 1.5, 2000);
+			AutonDrive(7.5, 1600);
+			AutonTurn('R', 1.5, 1600);
 			AutonIntake(1000, true);
-			AutonDrive(1.2, 2000);
-			AutonDrive(-1, 2000);
-			AutonTurn('R',3.2,2000);
-			AutonDrive(3.5, 2000);
+			AutonDrive(1.2, 1600);
+			AutonDrive(-1, 1500);
+			AutonTurn('R',3.2,1600);
+			AutonDrive(3.5, 1600);
 			AutonIntake(1000, false);
+			AutonTurn('R',3.2,1600);
+			AutonDrive(3.5, 1600);
+			AutonIntake(1000, true);
+			AutonDrive(0.5, 1600);
+
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
@@ -131,6 +136,10 @@ void autonomous() {
 			break;
 		case 7:
 			// Controller.print(0, 0, "Programming Skills");
+			ArmMotor.move_absolute(45, 100);
+			FlywheelMotor.move(127);
+			// pros::delay(45000);
+			// FlywheelMotor.brake();
 			// Controller.print(1, 0, "Skills Complete");
 			break;
 	}
