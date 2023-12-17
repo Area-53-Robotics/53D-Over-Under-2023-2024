@@ -98,19 +98,19 @@ void autonomous() {
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
-			AutonDrive(7.5, 1600);
-			AutonTurn('R', 1.5, 1600);
+			AutonDrive(7.5, 1300);
+			AutonTurn('R', 1.5, 1300);
 			AutonIntake(1000, true);
-			AutonDrive(1.2, 1600);
-			AutonDrive(-1, 1500);
+			AutonDrive(1.2, 1300);
+			AutonDrive(-1, 1300);
 			AutonTurn('R',3.2,1600);
-			AutonDrive(3.5, 1600);
+			AutonDrive(3.3, 1300);
 			AutonIntake(1000, false);
-			AutonTurn('R',3.2,1600);
-			AutonDrive(3.3, 1600);
+			AutonTurn('R',3.2,1300);
+			AutonDrive(3.3, 1300);
 			AutonIntake(1000, true);
-			AutonDrive(0.5, 1600);
-
+			AutonDrive(0.5, 1300);
+			AutonDrive(-1.5, 1300);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
