@@ -21,8 +21,8 @@ float GetCurveOutput(int input) {
 // Main drivetrain function called during each loop of driver control
 void SetDriveMotors() {
     // Update Joystick Values
-    LYAxis = Controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-    RYAxis = Controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+    LYAxis = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+    RYAxis = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
     
     // Deadzone
     if(abs(LYAxis) <= 10) LYAxis = 0;

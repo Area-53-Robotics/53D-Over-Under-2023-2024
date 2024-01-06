@@ -33,7 +33,7 @@ void initialize() {
 	ArmMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	ArmMotor.brake();
 	CataSensor.reset();
-	Controller.clear();
+	controller.clear();
 
 	/*
 	CreateMenuDropdown();

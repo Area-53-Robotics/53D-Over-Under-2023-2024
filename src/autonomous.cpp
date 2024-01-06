@@ -1,68 +1,5 @@
 #include "main.h"
 
-//* The robot drives the given length at the given velocity
-void drive(double length) {
-	drive(length, 600);
-}
-
-void drive(double length, unsigned short int velocity) {
-	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
-	Drivetrain.move_relative(length, velocity);
-	while(Drivetrain.get_actual_velocity(1) > 0) pros::delay(1);
-}
-
-//* The robot turns in the given direction at the given length
-void turn(char direction, double length) {
-    turn(direction, length, 600);
-}
-
-void turn(char direction, double length, unsigned short int velocity) {
-	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
-    if (direction == 'L') {
-		LMotors.move_relative(length * -1, velocity);
-		RMotors.move_relative(length, velocity);
-    } else if (direction == 'R') {
-		LMotors.move_relative(length, velocity);
-		RMotors.move_relative(length * -1, velocity);
-    }
-}
-
-// Temporary Drivetrain Auton Functions
-void AutonDrive(double length, unsigned short int delay, unsigned short int velocity) {
-	Drivetrain.move_relative(length, velocity);
-	pros::delay(delay);
-}
-
-void AutonDrive(double length, unsigned short int delay) {
-	AutonDrive(length, delay, 600);
-}
-
-void AutonTurn(char direction, double length,  unsigned short int delay, unsigned short int velocity) {
-    if (direction == 'L') {
-		LTDrivetrain.move_relative(length, velocity);
-    } else if (direction == 'R') {
-		LTDrivetrain.move_relative(length, velocity * -1);
-    }
-	pros::delay(delay);
-}
-
-void AutonTurn(char direction, double length, unsigned short int delay) {
-	AutonTurn(direction, length, delay, 600);
-}
-// Temporary Drivetrain Auton Functions
-
-void AutonIntake(unsigned short int msec, bool isReverse) {
-	if(!isReverse) {
-		IntakeMotor.move_velocity(200);
-		pros::delay(msec);
-		IntakeMotor.brake();
-	} else if(isReverse) {
-		IntakeMotor.move_velocity(-200);
-		pros::delay(msec);
-		IntakeMotor.brake();
-	}
-}
-
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -75,6 +12,7 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
  * from where it left off.
  */
 void autonomous() {
+	/*
 	GamePhase = 2;
 	// autonSelect = 2;
 	// if (pros::competition::is_connected()) autonSelect = 1;
@@ -143,4 +81,5 @@ void autonomous() {
 			// Controller.print(1, 0, "Skills Complete");
 			break;
 	}
+	*/
 }

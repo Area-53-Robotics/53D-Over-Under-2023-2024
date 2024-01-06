@@ -1,7 +1,7 @@
 #include "main.h"
-
+//sets the activation variable to false
 bool wingPistonsActivated = false;
-
+// if then sentence to set the activation value between true and false
 void PneumaticWings() {
     if (!wingPistonsActivated) {
         WingPistons.set_value(1);
