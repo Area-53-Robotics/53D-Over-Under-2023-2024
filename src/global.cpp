@@ -17,6 +17,7 @@ pros::Motor ArmMotor(7, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees
 
 pros::Motor IntakeMotor(11, pros::v5::MotorGears::blue);
 
+// Initializes a DigitalOut object to control the pneumatic wings.
 pros::adi::DigitalOut WingPistons(2);
 
 std::array<std::string,3> MotorNameList = { "Arm", "Flywheel", "Intake"};
