@@ -101,7 +101,6 @@ void autonomous() {
 			drive(1,2000);
 			drive(-1.5,2000);
 			drive(2,2000);
-			decltype(-1.5,2000);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 4:
