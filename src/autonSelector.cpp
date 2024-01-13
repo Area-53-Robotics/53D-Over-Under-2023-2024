@@ -22,10 +22,10 @@ void MenuDropdownCB(lv_event_t * e)
     lv_dropdown_get_selected_str(dropdown, selected, sizeof(selected));
 
     if(strcmp(selected, "Autons") == 0) OpenAutonSelectMenu();
-    else if (strcmp(selected, "Motors") == 0) OpenMotorMenu();
-    else if (strcmp(selected, "Sensors") == 0) OpenSensorMenu();
-    else if (strcmp(selected, "Keybinds") == 0) OpenKeybindMenu();
-    else if (strcmp(selected, "Notes") == 0) OpenNotesMenu();
+    else if(strcmp(selected, "Motors") == 0) OpenMotorMenu();
+    else if(strcmp(selected, "Sensors") == 0) OpenSensorMenu();
+    else if(strcmp(selected, "Keybinds") == 0) OpenKeybindMenu();
+    else if(strcmp(selected, "Notes") == 0) OpenNotesMenu();
 }
 
 /**

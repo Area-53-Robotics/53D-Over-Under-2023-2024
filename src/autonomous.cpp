@@ -1,5 +1,48 @@
 #include "main.h"
 
+//* The robot drives the given length at the given velocity
+void drive(double length) {
+	drive(length, 600);
+}
+
+void drive(double length, unsigned short int velocity) {
+	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
+	/*
+	Drivetrain.move_relative(length, velocity);
+	while(Drivetrain.get_actual_velocity(1) > 0) pros::delay(1);
+	*/
+	LMotors.move_relative(length, velocity);
+	RMotors.move_relative(length, velocity);
+}
+
+//* The robot turns in the given direction at the given length
+void turn(char direction, double length) {
+    turn(direction, length, 600);
+}
+
+void turn(char direction, double length, unsigned short int velocity) {
+	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
+    if(direction == 'L') {
+		LMotors.move_relative(length * -1, velocity);
+		RMotors.move_relative(length, velocity);
+    } else if(direction == 'R') {
+		LMotors.move_relative(length, velocity);
+		RMotors.move_relative(length * -1, velocity);
+    }
+}
+
+void AutonIntake(unsigned short int msec, bool isReverse) {
+	if(!isReverse) {
+		IntakeMotor.move_velocity(200);
+		pros::delay(msec);
+		IntakeMotor.brake();
+	} else if(isReverse) {
+		IntakeMotor.move_velocity(-200);
+		pros::delay(msec);
+		IntakeMotor.brake();
+	}
+}
+
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -12,13 +55,13 @@
  * from where it left off.
  */
 void autonomous() {
-	/*
 	GamePhase = 2;
 	// autonSelect = 2;
-	// if (pros::competition::is_connected()) autonSelect = 1;
+	// if(pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
 	// Controller.clear();
+	/*
 	switch (autonSelect) {
 		case 1:
 			// Controller.print(0, 0, "Left Quals Auton");
@@ -29,7 +72,7 @@ void autonomous() {
 			AutonDrive(-1, 2000);
 			AutonDrive(1, 2000);
 			AutonDrive(-1, 2000);
-			AutonTurn('R', 1, 2000);
+			turn('R', 1);
 			AutonDrive(-5, 2000);
 			// Controller.print(1, 0, "Auton Completed");
 			break;

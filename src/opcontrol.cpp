@@ -1,5 +1,10 @@
 #include "main.h"
 
+// Returns the curved output based off of the joystick value input as a parameter
+float GetCurveOutput(int input) {
+    return (std::exp(-20/12.7)+std::exp((std::abs(input)-127)/12.7)*(1-std::exp(-20/12.7))) * input;
+}
+
 /**
  * Runs the operator control code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -18,51 +23,52 @@ void opcontrol()
 	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
 	// autonomous();
 	ControllerDisplay();
-	bool chassisReversed = false;
+	short int leftAxis;
+	short int rightAxis;
+
 	while (true)
 	{
-		int left = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
-		int right = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
-		if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
+		// Update Joysticks
+		leftAxis = controller.get_analog(pros::E_CONTROLLER_ANALOG_LEFT_Y);
+		rightAxis = controller.get_analog(pros::E_CONTROLLER_ANALOG_RIGHT_Y);
+
+		// Deadzone
+		if(abs(leftAxis) <= 10) leftAxis = 0;
+		if(abs(rightAxis) <= 10) rightAxis = 0;
+		
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
 		{
 			controller.rumble(".");
-			chassisReversed = !chassisReversed;
+			drivetrainReversed = !drivetrainReversed;
 		}
-		if (chassisReversed){
-			RMotors.move(GetCurveOutput(-left));
-			LMotors.move(GetCurveOutput(-right));
-		} else {
-		LMotors.move(GetCurveOutput(left));
-		RMotors.move(GetCurveOutput(right));
-		}
-		//	SetDriveMotors();
 
-		if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
-			DirectionToggle();
-		if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
-			PneumaticWings();
+		if(drivetrainReversed) {
+			RMotors.move(GetCurveOutput(-leftAxis));
+			LMotors.move(GetCurveOutput(-rightAxis));
+		} else {
+			LMotors.move(GetCurveOutput(leftAxis));
+			RMotors.move(GetCurveOutput(rightAxis));
+		}
+			
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+			ToggleHorizontalPneumaticWings();
 
 		// Allows L1 and L2 to move the intake forward and backwards.
-		if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
+		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
 			IntakeMotor.move(127);
-		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
+		else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
 			IntakeMotor.move(-127);
 		else
 			IntakeMotor.brake();
 
-		if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R1))
-			FlywheelMotor.move(127);
-		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_R2))
-			FlywheelMotor.move(-127);
-		else
-			FlywheelMotor.brake();
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
+			kickerOn = !kickerOn;
 
-		if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN))
-			ArmMotor.move(100);
-		else if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP))
-			ArmMotor.move(-100);
-		else
-			ArmMotor.brake();
+		if(kickerOn) {
+			KickerMotor.move(127);
+		} else {
+			KickerMotor.brake();
+		}
 
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);

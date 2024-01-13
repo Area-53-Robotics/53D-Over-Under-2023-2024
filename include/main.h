@@ -76,7 +76,6 @@ void opcontrol(void);
 #include "global.hpp"
 #include "autonomous.hpp"
 #include "autonSelector.hpp"
-#include "subsystemHeaders/drive.hpp"
 #include "subsystemHeaders/wings.hpp"
 //#include <iostream>
 #endif
