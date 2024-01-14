@@ -21,7 +21,7 @@ float GetCurveOutput(int input) {
 void opcontrol()
 {
 	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
-	// autonomous();
+//	autonomous();
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
@@ -65,7 +65,7 @@ void opcontrol()
 			kickerOn = !kickerOn;
 
 		if(kickerOn) {
-			KickerMotor.move(127);
+			KickerMotor.move(110);
 		} else {
 			KickerMotor.brake();
 		}

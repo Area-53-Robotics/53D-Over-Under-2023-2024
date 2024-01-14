@@ -56,7 +56,7 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
  */
 void autonomous() {
 	GamePhase = 2;
-	// autonSelect = 2;
+	autonSelect = 2;
 	// if(pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
@@ -79,19 +79,9 @@ void autonomous() {
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
-			drive(7.5, 1300);
-			turn('R', 1.5, 1300);
-			AutonIntake(1000, true);
-			drive(1.2, 1300);
-			drive(-1, 1300);
-			turn('R',3.2,1600);
-			drive(3.3, 1300);
-			AutonIntake(1000, false);
-			turn('R',3.2,1300);
-			drive(3.3, 1300);
-			AutonIntake(1000, true);
-			drive(0.5, 1300);
-			drive(-1.5, 1300);
+			drive(1000,600);
+			pros::delay(1000);
+			AutonIntake(1000,true);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
