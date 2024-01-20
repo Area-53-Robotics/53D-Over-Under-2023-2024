@@ -8,17 +8,17 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 */
 
 //creates motor groups
-pros::MotorGroup LMotors({-1, -2, -3}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
-pros::MotorGroup RMotors({10, 9, 8}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::MotorGroup LMotors({-8, -9, -10}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::MotorGroup RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 
 //creates the motors for op control
 pros::Motor KickerMotor(11, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
 
-pros::Motor IntakeMotor(19, pros::v5::MotorGears::blue);
+pros::Motor IntakeMotor(7, pros::v5::MotorGears::blue);
 
 // Initializes a DigitalOut object to control the pneumatic wings.
-pros::adi::DigitalOut HorizontalWingPistons(1);
-pros::adi::DigitalOut VerticalWingPistons(2);
+pros::adi::DigitalOut HorizontalWingPistons('a');
+pros::adi::DigitalOut VerticalWingPistons('b');
 
 // std::array<std::string,3> MotorNameList = {"BLM", "FLM", "TLM", "BRM", "FRM", "TRM", "Intake", "Kicker"};
 std::array<std::string,2> MotorNameList = {"Kicker", "Intake"};
