@@ -8,8 +8,8 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 */
 
 //creates motor groups
-pros::MotorGroup LMotors({-8, -9, -10}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
-pros::MotorGroup RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
+pros::MotorGroup LMotors({-8, -9, -10}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
+pros::MotorGroup RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
 
 //creates the motors for op control
 pros::Motor KickerMotor(11, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);

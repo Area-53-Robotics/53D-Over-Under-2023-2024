@@ -115,8 +115,8 @@ void runOdometry() {
     // currentL = LEncoder.get_value();
     // currentR = REncoder.get_value();
     // currentS = SEncoder.get_value();
-    currentL = 0;
-    currentR = 0;
+    currentL = LMotors.get_position(1);
+    currentR = RMotors.get_position(1);
     currentS = 0;
 
     /*

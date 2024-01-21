@@ -34,6 +34,13 @@ void initialize() {
 	KickerMotor.brake();
 	controller.clear();
 
+	// pros::Task Odometry(runOdometry);
+
+	//
+		// pros::Task OdomDataCollection(odomDataCollection);
+		// pros::Task dataCollection(printTestValue);
+	//
+
 	/*
 	CreateMenuDropdown();
     OpenAutonSelectMenu();

@@ -118,8 +118,6 @@ int VConversion(double voltage) {
 
 void printTestValue() {
   /*
-  std::cout << "Target Velo: " << targetFWMSpeed << std::endl;
-  // std::cout << "kP: " << k
   std::cout << center("FWM1 Velo",10)       << " | "
             << center("FWM1 Volt",10)       << " | "
             << center("FWM2 Velo",10)       << " | "
@@ -136,29 +134,4 @@ void printTestValue() {
     pros::delay(50);
   }
   */
-  std::cout << center("Velo", 10) << " | "
-            << center("Error", 10) << " | "
-            << center("Volt", 10) << " | "
-            << center("V Term", 10) << " | "
-            << center("P Term", 10) << "\n";
-            
-  std::cout << std::string(10*4 + 4*2, '-') << "\n";
-
-  while(true) {
-    /*
-  std::cout << prd(FlywheelMotor1.get_velocity(), 3, 10) << " | "
-            << prd(FlywheelMotor1.get_velocity_error(), 3, 10) << " | "
-            << prd(FlywheelMotor1.get_applied_voltage(), 3, 10) << " | "
-            << prd(FlywheelMotor1.get_estimator_voltage(), 3, 10) << " | "
-            << prd(FlywheelMotor1.get_p_voltage(), 3, 10) << "\n";
-    std::cout << LEncoder.get_value() << std::endl;
-    std::cout << REncoder.get_value() << std::endl;
-    std::cout << "-------------------" << std::endl;
-  
-  std::cout << FlywheelMotorSpeed << std::endl;
-  std::cout << FlywheelSpinning << std::endl;
-  std::cout << "---------------------" << std::endl;
-    */
-  pros::delay(100);
-  }
 }
