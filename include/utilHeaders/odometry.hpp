@@ -61,7 +61,7 @@ extern double teamDiscDist;
 extern bool odomRunning;
 extern bool odomLoopActive;
 
-extern void runOdometry();
+extern void runOdometry(void* param);
 extern void setStartingOdomValues();
 extern void resetOdomPositions(int rollerNum);
 extern void odomKillSwitch();

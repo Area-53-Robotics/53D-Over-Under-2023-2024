@@ -10,8 +10,8 @@
 const double WHEEL_RADIUS = 1.379;
 
 //* Distances of tracking wheels from the tracking center in inches
-const double lDist = 3.791;
-const double rDist = 4.292;
+const double lDist = 0.675;
+const double rDist = 0.675;
 const double sDist = 2;
 
 //* Starting angle relative to the field in radians
@@ -96,7 +96,7 @@ double posY;
 // Location Constants
 
 //* Boolean variable representing if the odometry system is active
-bool odomRunning = false;
+bool odomRunning = true;
 //* Boolean variable representing if the odometry loop is on delay
 bool odomLoopActive = false; // Whether odom is on delay or not
 
@@ -105,8 +105,9 @@ bool odomLoopActive = false; // Whether odom is on delay or not
 * and orientation of the robot in the background during the progams
 * run
 */
-void runOdometry() {
+void runOdometry(void* param) {
   odomRunning = true;
+  int odomLoopCount = 0;
 
   while(odomRunning) {
     odomLoopActive = true;
@@ -117,7 +118,7 @@ void runOdometry() {
     // currentS = SEncoder.get_value();
     currentL = LMotors.get_position(1);
     currentR = RMotors.get_position(1);
-    currentS = 0;
+    // currentS = 0;
 
     /*
     * Calculates the distance travelled by each tracking wheel
@@ -125,7 +126,7 @@ void runOdometry() {
     */
     deltaL = degToRad(currentL - lastL) * WHEEL_RADIUS;
     deltaR = degToRad(currentR - lastR) * WHEEL_RADIUS;
-    deltaS = degToRad(currentS - lastS) * WHEEL_RADIUS;
+    // deltaS = degToRad(currentS - lastS) * WHEEL_RADIUS;
 
     /*
     * Updates the previous positions of the encoders in degrees
@@ -133,7 +134,7 @@ void runOdometry() {
     */
     lastL = currentL;
     lastR = currentR;
-    lastS = currentS;
+    // lastS = currentS;
 
     /*
     * Updates the total change of each tracking wheel in inches
@@ -144,7 +145,8 @@ void runOdometry() {
     totalDeltaS += deltaS;
 
     //* Calculates the absolute orientation of the robot in radians
-    orientation = initOrientation - (totalDeltaL - totalDeltaR)/(lDist + rDist);
+    // orientation = initOrientation - (totalDeltaL - totalDeltaR)/(lDist + rDist);
+    orientation = degToRad(360 - Inertial.get_heading());
     //* Calculate the change in the angle of the robot in radians
     deltaTheta = orientation - lastOrientation;
     //* Updatse the previous theta value in radians
@@ -180,7 +182,7 @@ void runOdometry() {
     * Wraps the orientation angle back around if it ever goes under 0
     * or over 2 pi
     */
-    orientation = simplifyRadAngle(orientation);
+    // orientation = simplifyRadAngle(orientation);
 
     //* Updates the global position
     posX += deltaXGlobal;
@@ -197,9 +199,18 @@ void runOdometry() {
 
     odomLoopActive = false;
 
+    odomLoopCount++;
+    if (odomLoopCount % 50 == 0) {
+
+    std::cout << "OdomLoopCount:" << odomLoopCount << std::endl;
+    std::cout << totalDeltaL << std::endl;
+    std::cout << totalDeltaR << std::endl;
+    std::cout << posX << std::endl;
+    std::cout << posY << std::endl;
+    std::cout << "------------------------------------" << std::endl;
+    }
+
     pros::delay(10);
-    /*
-    */
   }
 }
 

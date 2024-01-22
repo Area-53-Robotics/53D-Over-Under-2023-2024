@@ -26,6 +26,8 @@ void opcontrol()
 	short int leftAxis;
 	short int rightAxis;
 
+	int count = 0;
+
 	while (true)
 	{
 		// Update Joysticks
@@ -69,6 +71,23 @@ void opcontrol()
 		} else {
 			KickerMotor.brake();
 		}
+
+		count++;
+		/*
+		if (count % 40 == 0) {
+			// std::cout << "Orientation:" << (360 - Inertial.get_heading()) << std::endl;
+			// std::cout << "totalDeltaL" << totalDeltaL << std::endl;
+			// std::cout << "totalDeltaR" << totalDeltaR << std::endl;
+			std::cout << LMotors.get_position(0) << std::endl;
+			std::cout << LMotors.get_position(1) << std::endl;
+			std::cout << LMotors.get_position(2) << std::endl;
+			std::cout << "---" << std::endl;
+			std::cout << RMotors.get_position(0) << std::endl;
+			std::cout << RMotors.get_position(1) << std::endl;
+			std::cout << RMotors.get_position(2) << std::endl;
+			std::cout << "---------------------------" << std::endl;
+		}
+		*/
 
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);

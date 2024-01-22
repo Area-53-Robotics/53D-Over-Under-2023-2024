@@ -23,8 +23,8 @@ void on_center_button() {
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-	/*
 	pros::lcd::initialize();
+	/*
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
@@ -33,8 +33,10 @@ void initialize() {
 	KickerMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	KickerMotor.brake();
 	controller.clear();
+	Inertial.reset();
 
-	// pros::Task Odometry(runOdometry);
+	pros::Task odometry(runOdometry, (void*)"PROS");
+  	// pros::Task my_task(runOdometry, (void*)"PROS", "My Task");
 
 	//
 		// pros::Task OdomDataCollection(odomDataCollection);

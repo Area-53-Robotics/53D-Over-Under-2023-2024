@@ -12,6 +12,8 @@ extern pros::Motor IntakeMotor;
 extern pros::adi::DigitalOut HorizontalWingPistons;
 extern pros::adi::DigitalOut VerticalWingPistons;
 
+extern pros::IMU Inertial;
+
 extern std::array<std::string,2> MotorNameList;
 extern std::array<pros::Motor,2> MotorObjectList;
 

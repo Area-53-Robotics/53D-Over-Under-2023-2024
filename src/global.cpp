@@ -20,6 +20,8 @@ pros::Motor IntakeMotor(7, pros::v5::MotorGears::blue);
 pros::adi::DigitalOut HorizontalWingPistons('a');
 pros::adi::DigitalOut VerticalWingPistons('b');
 
+pros::IMU Inertial(1);
+
 // std::array<std::string,3> MotorNameList = {"BLM", "FLM", "TLM", "BRM", "FRM", "TRM", "Intake", "Kicker"};
 std::array<std::string,2> MotorNameList = {"Kicker", "Intake"};
 std::array<pros::Motor,2> MotorObjectList = {KickerMotor, IntakeMotor};
