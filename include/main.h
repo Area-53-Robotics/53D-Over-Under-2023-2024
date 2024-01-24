@@ -22,7 +22,7 @@
  *
  * For instance, E_CONTROLLER_MASTER has a shorter name: CONTROLLER_MASTER.
  * E_CONTROLLER_MASTER is pedantically correct within the PROS styleguide, but
- * not convienent for most student programmers.
+ * not convenient for most student programmers.
  */
 #define PROS_USE_SIMPLE_NAMES
 
@@ -72,17 +72,9 @@ void opcontrol(void);
 #endif
 
 #ifdef __cplusplus
-#include "liblvgl/lvgl.h"
-#include "global.hpp"
-#include "autonomous.hpp"
-#include "autonSelector.hpp"
-#include "subsystemHeaders/wings.hpp"
-#include "utilHeaders/misc.hpp"
-#include "utilHeaders/odometry.hpp"
-#include "utilHeaders/pid.hpp"
-#include <cmath>
-#include <fstream>
-#include <sstream>
+/**
+ * You can add C++-only headers here
+ */
 //#include <iostream>
 #endif
 
