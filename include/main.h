@@ -76,8 +76,6 @@ void opcontrol(void);
 #include "autonomous.hpp"
 #include "subsystemHeaders/wings.hpp"
 #include "utilHeaders/misc.hpp"
-#include "utilHeaders/odometry.hpp"
-#include "utilHeaders/pid.hpp"
 #include <cmath>
 #include <fstream>
 #include <sstream>

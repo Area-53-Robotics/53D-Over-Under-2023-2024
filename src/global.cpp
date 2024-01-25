@@ -7,27 +7,27 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
     Best Battery: 13
 */
 
+pros::Motor BLMotor(-8, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor MLMotor(-9, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor FLMotor(-10, pros::E_MOTOR_GEAR_BLUE);
+
+pros::Motor BRMotor(18, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor MRMotor(19, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
+
 //creates motor groups
-pros::Motor_Group LMotors({-8,-9, -10}, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor_Group RMotors({18, 19, 20}, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
-//pros::Motor_Group LMotors({-8, -9, -10}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
-//pros::Motor_Group RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
+pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
+pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
 //creates the motors for op control
-//pros::Motor KickerMotor(11, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
 pros::Motor KickerMotor(11, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
-//pros::Motor IntakeMotor(7, pros::v5::MotorGears::blue);
-pros::Motor IntakeMotor(7,pros::E_MOTOR_GEAR_BLUE)
+pros::Motor IntakeMotor(7,pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes a DigitalOut object to control the pneumatic wings.
 pros::ADIDigitalOut HorizontalWingPistons('a');
 pros::ADIDigitalOut VerticalWingPistons('b');
 
 pros::IMU Inertial(1);
-
-// std::array<std::string,3> MotorNameList = {"BLM", "FLM", "TLM", "BRM", "FRM", "TRM", "Intake", "Kicker"};
-std::array<std::string,2> MotorNameList = {"Kicker", "Intake"};
-std::array<pros::Motor,2> MotorObjectList = {KickerMotor, IntakeMotor};
 
 bool kickerOn = false;
 bool drivetrainReversed = false;

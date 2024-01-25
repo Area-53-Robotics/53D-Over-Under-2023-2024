@@ -1,21 +1,22 @@
-#include "main.h"
-
 extern pros::Controller controller;
+extern pros::Motor BLMotor;
+extern pros::Motor MLMotor;
+extern pros::Motor FLMotor;
 
-extern pros::MotorGroup LMotors;
-extern pros::MotorGroup RMotors;
+extern pros::Motor BRMotor;
+extern pros::Motor MRMotor;
+extern pros::Motor FRMotor;
+
+extern pros::Motor_Group LMotors;
+extern pros::Motor_Group RMotors;
 
 extern pros::Motor KickerMotor;
-
 extern pros::Motor IntakeMotor;
 
 extern pros::ADIDigitalOut HorizontalWingPistons;
 extern pros::ADIDigitalOut VerticalWingPistons;
 
 extern pros::IMU Inertial;
-
-extern std::array<std::string,2> MotorNameList;
-extern std::array<pros::Motor,2> MotorObjectList;
 
 extern bool kickerOn;
 extern bool drivetrainReversed;
