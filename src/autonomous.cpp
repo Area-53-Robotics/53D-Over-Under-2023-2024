@@ -6,8 +6,7 @@ void drive(double length) {
 }
 
 void drive(double length, unsigned short int velocity) {
-	length *= 360;
-	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
+	// while(LMotors.get_actual_velocities().begin() > 0 || RMotors.get_actual_velocities().begin() > 0) pros::delay(1);
 	LMotors.move_relative(length, velocity);
 	RMotors.move_relative(length, velocity);
 }
@@ -18,8 +17,7 @@ void turn(char direction, double length) {
 }
 
 void turn(char direction, double length, unsigned short int velocity) {
-	length *= 360;
-	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
+	// while(LMotors.get_actual_velocities().begin() > 0 || RMotors.get_actual_velocities().begin() > 0) pros::delay(1);
     if(direction == 'L') {
 		LMotors.move_relative(length * -1, velocity);
 		RMotors.move_relative(length, velocity);
