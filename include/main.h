@@ -72,9 +72,15 @@ void opcontrol(void);
 #endif
 
 #ifdef __cplusplus
-/**
- * You can add C++-only headers here
- */
+#include "global.hpp"
+#include "autonomous.hpp"
+#include "subsystemHeaders/wings.hpp"
+#include "utilHeaders/misc.hpp"
+#include "utilHeaders/odometry.hpp"
+#include "utilHeaders/pid.hpp"
+#include <cmath>
+#include <fstream>
+#include <sstream>
 //#include <iostream>
 #endif
 
