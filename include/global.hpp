@@ -26,3 +26,9 @@ extern void ControllerDisplay();
 extern unsigned short int autonSelect;
 
 extern unsigned short int GamePhase;
+
+extern lemlib::Drivetrain drivetrain;
+extern lemlib::OdomSensors sensors;
+extern lemlib::ControllerSettings linearController;
+extern lemlib::ControllerSettings angularController;
+extern lemlib::Chassis chassis;

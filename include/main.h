@@ -72,6 +72,7 @@ void opcontrol(void);
 #endif
 
 #ifdef __cplusplus
+#include "lemlib/api.hpp"
 #include "global.hpp"
 #include "autonomous.hpp"
 #include "subsystemHeaders/wings.hpp"

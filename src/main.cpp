@@ -28,6 +28,8 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 
+	chassis.calibrate();
+
 	KickerMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
 	KickerMotor.brake();
 	controller.clear();
