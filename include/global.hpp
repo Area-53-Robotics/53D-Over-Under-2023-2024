@@ -9,8 +9,8 @@ extern pros::Motor KickerMotor;
 
 extern pros::Motor IntakeMotor;
 
-extern pros::adi::DigitalOut HorizontalWingPistons;
-extern pros::adi::DigitalOut VerticalWingPistons;
+extern pros::ADIDigitalOut HorizontalWingPistons;
+extern pros::ADIDigitalOut VerticalWingPistons;
 
 extern pros::IMU Inertial;
 

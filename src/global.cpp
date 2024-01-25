@@ -8,17 +8,18 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 */
 
 //creates motor groups
-pros::MotorGroup LMotors({-8, -9, -10}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
-pros::MotorGroup RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
+pros::Motor_Group LMotors({-8,-9, -10});
+pros::Motor_Group RMotors({18, 19, 20});
+//pros::Motor_Group LMotors({-8, -9, -10}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
+//pros::Motor_Group RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::degrees);
 
 //creates the motors for op control
 pros::Motor KickerMotor(11, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
-
 pros::Motor IntakeMotor(7, pros::v5::MotorGears::blue);
 
 // Initializes a DigitalOut object to control the pneumatic wings.
-pros::adi::DigitalOut HorizontalWingPistons('a');
-pros::adi::DigitalOut VerticalWingPistons('b');
+pros::ADIDigitalOut HorizontalWingPistons('a');
+pros::ADIDigitalOut VerticalWingPistons('b');
 
 pros::IMU Inertial(1);
 
