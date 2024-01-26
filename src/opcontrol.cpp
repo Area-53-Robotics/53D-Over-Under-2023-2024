@@ -20,13 +20,9 @@ float GetCurveOutput(int input) {
  */
 void opcontrol()
 {
-	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
-//	autonomous();
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
-
-	int count = 0;
 
 	while (true)
 	{
@@ -38,56 +34,46 @@ void opcontrol()
 		if(abs(leftAxis) <= 10) leftAxis = 0;
 		if(abs(rightAxis) <= 10) rightAxis = 0;
 		
+		// When the A button is pressed, the drivetrain controls are reversed
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
 		{
 			controller.rumble(".");
 			drivetrainReversed = !drivetrainReversed;
 		}
 
-		if(drivetrainReversed) {
-			RMotors.move(GetCurveOutput(-leftAxis));
-			LMotors.move(GetCurveOutput(-rightAxis));
-		} else {
+		if(!drivetrainReversed) {
 			LMotors.move(GetCurveOutput(leftAxis));
 			RMotors.move(GetCurveOutput(rightAxis));
+		} else {
+			RMotors.move(GetCurveOutput(-leftAxis));
+			LMotors.move(GetCurveOutput(-rightAxis));
 		}
-			
+		
+		// When LEFT is pressed, toggles the activation of the wings
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
 			ToggleHorizontalPneumaticWings();
 
-		// Allows L1 and L2 to move the intake forward and backwards.
+		// Allows L1 and L2 to move the intake forward and backwards respectively
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
 			IntakeMotor.move(127);
 		else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
 			IntakeMotor.move(-127);
 		else
 			IntakeMotor.brake();
-
+		
+		// When R2 is pressed, the activation of the kicker is toggled
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
 			kickerOn = !kickerOn;
 
+		// If the kicker is supposed to be on...
 		if(kickerOn) {
+			// Then the kicker motor continuously rotates downwards at 87% speed (so that it can hit the slip gear to shoot)
 			KickerMotor.move(110);
+		// If the kicker is supposed to be off...
 		} else {
+			// Then the kicker brakes and holds its current position
 			KickerMotor.brake();
 		}
-
-		count++;
-		/*
-		if (count % 40 == 0) {
-			// std::cout << "Orientation:" << (360 - Inertial.get_heading()) << std::endl;
-			// std::cout << "totalDeltaL" << totalDeltaL << std::endl;
-			// std::cout << "totalDeltaR" << totalDeltaR << std::endl;
-			std::cout << LMotors.get_position(0) << std::endl;
-			std::cout << LMotors.get_position(1) << std::endl;
-			std::cout << LMotors.get_position(2) << std::endl;
-			std::cout << "---" << std::endl;
-			std::cout << RMotors.get_position(0) << std::endl;
-			std::cout << RMotors.get_position(1) << std::endl;
-			std::cout << RMotors.get_position(2) << std::endl;
-			std::cout << "---------------------------" << std::endl;
-		}
-		*/
 
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);
