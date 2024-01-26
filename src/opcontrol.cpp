@@ -21,7 +21,7 @@ float GetCurveOutput(int input) {
 void opcontrol()
 {
 	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
-//	autonomous();
+	autonomous();
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
@@ -54,7 +54,10 @@ void opcontrol()
 			
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
 			ToggleHorizontalPneumaticWings();
-
+		
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT) and controller.get_digital(pros::E_CONTROLLER_DIGITAL_A))
+			ToggleHangingMech();
+		
 		// Allows L1 and L2 to move the intake forward and backwards.
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
 			IntakeMotor.move(127);

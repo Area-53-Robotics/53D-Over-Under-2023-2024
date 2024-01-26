@@ -2,6 +2,7 @@
 // Boolean variable to store whether the wings' pneumatic pistons have been activated, it is initialized as false
 bool horizontalWingsActivated = false;
 bool verticalWingsActivated = false;
+bool hangingMechActivated = false;
 
 // if then sentence to set the activation value between true and false
 void ToggleHorizontalPneumaticWings() {
@@ -30,3 +31,13 @@ void ToggleVerticalPneumaticWings() {
         verticalWingsActivated = false;
     }
 }
+
+void ToggleHangingMech(){
+    if(!hangingMechActivated){
+        HangingMech.set_value(1);
+        hangingMechActivated = true;
+    } else{
+        HangingMech.set_value(0);
+        hangingMechActivated = false;
+    }
+    }

@@ -29,13 +29,22 @@ void turn(char direction, double length, unsigned short int velocity) {
 
 void AutonIntake(unsigned short int msec, bool isReverse) {
 	if(!isReverse) {
-		IntakeMotor.move_velocity(200);
+		IntakeMotor.move(115);
 		pros::delay(msec);
 		IntakeMotor.brake();
 	} else if(isReverse) {
-		IntakeMotor.move_velocity(-200);
+		IntakeMotor.move(-115);
 		pros::delay(msec);
 		IntakeMotor.brake();
+	}
+}
+void AutonWings (unsigned short int msec, bool activateWings){
+	if(!activateWings){
+		HorizontalWingPistons.set_value(1);
+		pros::delay(msec);
+		HorizontalWingPistons.set_value(0);
+	} else{
+		HorizontalWingPistons.set_value(0);
 	}
 }
 
@@ -51,8 +60,8 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
  * from where it left off.
  */
 void autonomous() {
-	GamePhase = 2;
-	// autonSelect = 2;
+	GamePhase = 1;
+	 autonSelect = 1;
 	// if(pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
@@ -60,16 +69,21 @@ void autonomous() {
 	
 	switch (autonSelect) {
 		case 1:
-			// Controller.print(0, 0, "Left Quals Auton");
-			drive(8, 2000);
-			turn('R', 5, 2000);
-			drive(1, 2000);
-			AutonIntake(1000, true);
-			drive(-1, 2000);
-			drive(1, 2000);
-			drive(-1, 2000);
-			turn('R', 1);
-			drive(-5, 2000);
+			 //Controller.print(0, 0, "Left Quals Auton");
+			/*chassis.moveToPoint(0,8,1500);
+			AutonIntake(1000,false);
+			chassis.moveToPoint(0, -15, 5000, false);	
+			chassis.turnTo(10,0,100);
+			chassis.moveToPoint(0,-35,5000,false);
+			chassis.turnTo(90,0,100,false);
+			chassis.moveToPoint(0,-15,1000,false); */
+			chassis.moveToPoint(0,15,1500);
+			//AutonWings(1500,false);
+			chassis.turnTo(90,0,100);
+			AutonIntake(1000,true);
+			chassis.moveToPoint(0,45,1500);
+			chassis.moveToPoint(0,-10,1500,false);
+			chassis.moveToPoint(0,8,1500);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:

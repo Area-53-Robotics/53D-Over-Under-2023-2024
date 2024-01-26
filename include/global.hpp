@@ -15,6 +15,7 @@ extern pros::Motor IntakeMotor;
 
 extern pros::ADIDigitalOut HorizontalWingPistons;
 extern pros::ADIDigitalOut VerticalWingPistons;
+extern pros::ADIDigitalOut HangingMech;
 
 extern pros::IMU Inertial;
 

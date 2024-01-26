@@ -26,6 +26,7 @@ pros::Motor IntakeMotor(7,pros::E_MOTOR_GEAR_BLUE);
 // Initializes a DigitalOut object to control the pneumatic wings.
 pros::ADIDigitalOut HorizontalWingPistons('a');
 pros::ADIDigitalOut VerticalWingPistons('b');
+pros::ADIDigitalOut HangingMech('c');
 
 pros::IMU Inertial(1);
 
@@ -89,14 +90,14 @@ inline lemlib::ControllerSettings linearController(
     100,  // small error range timeout, in milliseconds
     3,    // large error range, in inches
     500,  // large error range timeout, in milliseconds
-    40    // maximum acceleration (slew)
+    100    // maximum acceleration (slew)
 );
 
 // angular motion controller
 inline lemlib::ControllerSettings angularController(
-    2,     // proportional gain (kP)
+    1,     // proportional gain (kP)
     0.01,  // integral gain (kI)
-    30,    // derivative gain (kD)
+    0,    // derivative gain (kD)
     3,     // anti windup
     1,     // small error range, in degrees
     100,   // small error range timeout, in milliseconds

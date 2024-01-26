@@ -30,6 +30,19 @@ void initialize() {
 
 	chassis.calibrate();
 
+	 pros::Task screenTask([&]() {
+        lemlib::Pose pose(0, 0, 0);
+        while (true) {
+            // print robot location to the brain screen
+            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
+            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
+            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
+            // log position telemetry
+            lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
+            // delay to save resources
+            pros::delay(50);
+        }
+    });
 	/*
 	* Sets the starting X coordinate, Y coordinate, and
 	* orientation of the robot in the program depending on which
@@ -42,7 +55,7 @@ void initialize() {
 			break;
 		case 1:
 			// Left Quals
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
+			chassis.setPose(23,58, 90); // X, Y, Heading (degrees)
 			break;
 		case 2:
 			// Right Quals
