@@ -27,6 +27,7 @@ void turn(char direction, double length, unsigned short int velocity) {
     }
 }
 
+// Activates the intake for the given amount of milliseconds in either the forward or reverse direction
 void AutonIntake(unsigned short int msec, bool isReverse) {
 	if(!isReverse) {
 		IntakeMotor.move(115);
@@ -38,7 +39,9 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
 		IntakeMotor.brake();
 	}
 }
-void AutonWings (unsigned short int msec, bool activateWings){
+
+// Toggles the activation of the horizontal wings
+void AutonWings(unsigned short int msec, bool activateWings){
 	if(!activateWings){
 		HorizontalWingPistons.set_value(1);
 		pros::delay(msec);
@@ -60,16 +63,15 @@ void AutonWings (unsigned short int msec, bool activateWings){
  * from where it left off.
  */
 void autonomous() {
+	// Informs the program that the robot is in the autonomous phase
 	GamePhase = 1;
-	 autonSelect = 1;
-	// if(pros::competition::is_connected()) autonSelect = 1;
-	// setStartingOdomValues();
-	// pros::delay(500);
-	// Controller.clear();
+	// Sets the auton to the "Left Quals" auton
+	autonSelect = 1;
 	
 	switch (autonSelect) {
+		// LemLib left quals auton in progress
 		case 1:
-			 //Controller.print(0, 0, "Left Quals Auton");
+			controller.print(0, 0, "Left Quals Auton");
 			/*chassis.moveToPoint(0,8,1500);
 			AutonIntake(1000,false);
 			chassis.moveToPoint(0, -15, 5000, false);	
@@ -84,42 +86,42 @@ void autonomous() {
 			chassis.moveToPoint(0,45,1500);
 			chassis.moveToPoint(0,-10,1500,false);
 			chassis.moveToPoint(0,8,1500);
-			// Controller.print(1, 0, "Auton Completed");
+			controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
-			// Controller.print(0, 0, "Right Quals Auton");
+			controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
 			drive(1000,600);
 			pros::delay(1000);
 			AutonIntake(1000,true);
-			// Controller.print(1, 0, "Auton Completed");
+			controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
-			// Controller.print(0, 0, "Left Elims Auton");
+			controller.print(0, 0, "Left Elims Auton");
 			drive(4.5,2000);
 			AutonIntake(1000, true);
 			drive(1,2000);
 			drive(-1.5,2000);
 			drive(2,2000);
-			// Controller.print(1, 0, "Auton Completed");
+			controller.print(1, 0, "Auton Completed");
 			break;
 		case 4:
-			// Controller.print(0, 0, "Right Elims Auton");
-			// Controller.print(1, 0, "Auton Completed");
+			controller.print(0, 0, "Right Elims Auton");
+			controller.print(1, 0, "Auton Completed");
 			break;
 		case 5:
-			// Controller.print(0, 0, "Full AWP");
-			// Controller.print(1, 0, "Auton Completed");
+			controller.print(0, 0, "Full AWP");
+			controller.print(1, 0, "Auton Completed");
 			break;
 		case 6:
-			// Controller.print(0, 0, "No Auton Selected");
+			controller.print(0, 0, "No Auton Selected");
 			break;
 		case 7:
-			//Controller.print(0, 0, "Programming Skills");
+			// Activates the kicker motor for the entire programming skills run
+			controller.print(0, 0, "Programming Skills");
 			KickerMotor.move(127);
 			pros::delay(45000);
-			// FlywheelMotor.brake();
-			// Controller.print(1, 0, "Skills Complete");
+			controller.print(1, 0, "Skills Complete");
 			break;
 	}
 	
