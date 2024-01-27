@@ -5,6 +5,10 @@ extern pros::Controller controller;
 extern pros::MotorGroup LMotors;
 extern pros::MotorGroup RMotors;
 
+extern pros::MotorGroup Drivetrain;
+extern pros::MotorGroup LTDrivetrain;
+extern pros::MotorGroup RTDrivetrain;
+
 extern pros::Motor KickerMotor;
 
 extern pros::Motor IntakeMotor;

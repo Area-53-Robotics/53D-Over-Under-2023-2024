@@ -17,8 +17,31 @@ void turn(char direction, double length) {
     turn(direction, length, 600);
 }
 
+// -- Temporary Drivetrain Auton Functions
+void AutonDrive(double length, unsigned short int delay, unsigned short int velocity) {
+	Drivetrain.move_relative(length, velocity);
+	pros::delay(delay);
+}
+
+void AutonDrive(double length, unsigned short int delay) {
+	AutonDrive(length, delay, 600);
+}
+
+void AutonTurn(char direction, double length,  unsigned short int delay, unsigned short int velocity) {
+    if (direction == 'L') {
+		LTDrivetrain.move_relative(length, velocity);
+    } else if (direction == 'R') {
+		LTDrivetrain.move_relative(length, velocity * -1);
+    }
+	pros::delay(delay);
+}
+
+void AutonTurn(char direction, double length, unsigned short int delay) {
+	AutonTurn(direction, length, delay, 600);
+}
+// -- Temporary Drivetrain Auton Functions
+
 void turn(char direction, double length, unsigned short int velocity) {
-	length *= 360;
 	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
     if(direction == 'L') {
 		LMotors.move_relative(length * -1, velocity);
