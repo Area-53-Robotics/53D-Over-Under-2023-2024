@@ -63,7 +63,6 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
 		IntakeMotor.brake();
 	}
 }
-
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -100,9 +99,18 @@ void autonomous() {
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
-			drive(1000,600);
-			pros::delay(1000);
+			AutonDrive(4, 1000);
 			AutonIntake(1000,true);
+			AutonDrive(-8,1000);
+			AutonTurn('L',1.5,1000);
+			VerticalWingPistons.set_value(1);
+			AutonDrive(-2,1000);
+			AutonTurn('L',4,1000);
+			AutonDrive(-5,1000);
+			AutonDrive(5,1000);
+			AutonTurn('L',25,1000);
+			AutonIntake(1000,false);
+			AutonDrive(5,1000);
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:

@@ -52,8 +52,14 @@ void opcontrol()
 			RMotors.move(GetCurveOutput(rightAxis));
 		}
 			
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
 			ToggleHorizontalPneumaticWings();
+		
+		if (controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1))
+		ToggleVerticalPneumaticWings();
+
+		if (controller.get_digital(pros::E_CONTROLLER_DIGITAL_LEFT) and controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
+		ToggleHangingMech();
 
 		// Allows L1 and L2 to move the intake forward and backwards.
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
@@ -63,7 +69,7 @@ void opcontrol()
 		else
 			IntakeMotor.brake();
 
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
 			kickerOn = !kickerOn;
 
 		if(kickerOn) {

@@ -23,6 +23,7 @@ pros::Motor IntakeMotor(7, pros::v5::MotorGears::blue);
 // Initializes a DigitalOut object to control the pneumatic wings.
 pros::adi::DigitalOut HorizontalWingPistons('a');
 pros::adi::DigitalOut VerticalWingPistons('b');
+pros::adi::DigitalOut HangingMechPistons('c');
 
 pros::IMU Inertial(1);
 
