@@ -18,8 +18,9 @@ void turn(char direction, double length) {
 }
 
 // -- Temporary Drivetrain Auton Functions
-void AutonDrive(double length, unsigned short int delay, unsigned short int velocity) {
-	Drivetrain.move_relative(length, velocity);
+void AutonDrive(double length, unsigned short int delay,unsigned short int velocity) {
+	LMotors.move_relative(length,velocity);
+	RMotors.move_relative(length,velocity);
 	pros::delay(delay);
 }
 
@@ -63,6 +64,14 @@ void AutonIntake(unsigned short int msec, bool isReverse) {
 		IntakeMotor.brake();
 	}
 }
+void AutonTurned(double length, unsigned short int delay,unsigned short int velocity ){
+	LMotors.move_relative(length,velocity);
+}
+void AutonTurned(double length,unsigned short int delay){
+	AutonTurned(length,delay,600);
+}
+
+
 /**
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
@@ -99,18 +108,18 @@ void autonomous() {
 		case 2:
 			// Controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
-			AutonDrive(4, 1000);
-			AutonIntake(1000,true);
-			AutonDrive(-8,1000);
-			AutonTurn('L',1.5,1000);
 			VerticalWingPistons.set_value(1);
-			AutonDrive(-2,1000);
-			AutonTurn('L',4,1000);
-			AutonDrive(-5,1000);
-			AutonDrive(5,1000);
-			AutonTurn('L',25,1000);
-			AutonIntake(1000,false);
-			AutonDrive(5,1000);
+			AutonDrive(800,1000);
+			AutonIntake(1000,true);
+			AutonDrive(-1500,1000);
+			LMotors.move_relative(10.5,600);
+			
+			
+
+
+			
+			
+			
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:

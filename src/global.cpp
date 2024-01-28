@@ -16,14 +16,14 @@ pros::MotorGroup LTDrivetrain({-8, -9, -10, -18, -19, -20}, pros::v5::MotorGears
 pros::MotorGroup RTDrivetrain({8, 9, 10, 18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 
 //creates the motors for op control
-pros::Motor KickerMotor(11, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
+pros::Motor KickerMotor(12, pros::v5::MotorGears::red, pros::v5::MotorUnits::degrees);
 
 pros::Motor IntakeMotor(7, pros::v5::MotorGears::blue);
 
 // Initializes a DigitalOut object to control the pneumatic wings.
-pros::adi::DigitalOut HorizontalWingPistons('a');
-pros::adi::DigitalOut VerticalWingPistons('b');
-pros::adi::DigitalOut HangingMechPistons('c');
+pros::adi::DigitalOut HorizontalWingPistons('c');
+pros::adi::DigitalOut VerticalWingPistons('a');
+pros::adi::DigitalOut HangingMechPistons('b');
 
 pros::IMU Inertial(1);
 
