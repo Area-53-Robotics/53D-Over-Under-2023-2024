@@ -200,8 +200,8 @@ void runOdometry(void* param) {
     odomLoopActive = false;
 
     odomLoopCount++;
+    /*
     if (odomLoopCount % 50 == 0) {
-
     std::cout << "OdomLoopCount:" << odomLoopCount << std::endl;
     std::cout << totalDeltaL << std::endl;
     std::cout << totalDeltaR << std::endl;
@@ -209,6 +209,7 @@ void runOdometry(void* param) {
     std::cout << posY << std::endl;
     std::cout << "------------------------------------" << std::endl;
     }
+    */
 
     pros::delay(10);
   }

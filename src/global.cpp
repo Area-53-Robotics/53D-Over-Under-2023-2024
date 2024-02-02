@@ -26,19 +26,23 @@ pros::adi::DigitalOut VerticalWingPistons('b');
 
 pros::IMU Inertial(1);
 
+pros::Optical Optical(6);
+
 // std::array<std::string,3> MotorNameList = {"BLM", "FLM", "TLM", "BRM", "FRM", "TRM", "Intake", "Kicker"};
 std::array<std::string,2> MotorNameList = {"Kicker", "Intake"};
 std::array<pros::Motor,2> MotorObjectList = {KickerMotor, IntakeMotor};
 
 bool kickerOn = false;
 bool drivetrainReversed = false;
+bool manualKicker = true;
 
 void ControllerDisplay() {
+    pros::delay(50);
     if(!drivetrainReversed) controller.print(0, 0, "Reversed: false");
     else if(drivetrainReversed) controller.print(0, 0, "Reversed: true");
     pros::delay(50);
-    if(!kickerOn) controller.print(1, 0, "Kicker: Deactivated");
-    else if(kickerOn) controller.print(1, 0, "Kicker: Activated");
+    if(manualKicker) controller.print(1, 0, "Kicker: Manual");
+    else if(!manualKicker) controller.print(1, 0, "Kicker: Automatic");
 }
 
 /*

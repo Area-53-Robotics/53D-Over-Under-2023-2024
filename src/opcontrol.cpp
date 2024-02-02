@@ -28,6 +28,8 @@ void opcontrol()
 
 	int count = 0;
 
+	Optical.set_led_pwm(100);
+
 	while (true)
 	{
 		// Update Joysticks
@@ -42,6 +44,13 @@ void opcontrol()
 		{
 			controller.rumble(".");
 			drivetrainReversed = !drivetrainReversed;
+			ControllerDisplay();
+		}
+
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+			controller.rumble(".");
+			manualKicker = !manualKicker;
+			ControllerDisplay();
 		}
 
 		if(drivetrainReversed) {
@@ -63,8 +72,14 @@ void opcontrol()
 		else
 			IntakeMotor.brake();
 
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
-			kickerOn = !kickerOn;
+		if(manualKicker) {
+			if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
+				kickerOn = !kickerOn;
+		} else {
+			if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
+			else kickerOn = false;
+		}
+		
 
 		if(kickerOn) {
 			KickerMotor.move(110);
@@ -73,19 +88,14 @@ void opcontrol()
 		}
 
 		count++;
+
 		/*
 		if (count % 40 == 0) {
-			// std::cout << "Orientation:" << (360 - Inertial.get_heading()) << std::endl;
-			// std::cout << "totalDeltaL" << totalDeltaL << std::endl;
-			// std::cout << "totalDeltaR" << totalDeltaR << std::endl;
-			std::cout << LMotors.get_position(0) << std::endl;
-			std::cout << LMotors.get_position(1) << std::endl;
-			std::cout << LMotors.get_position(2) << std::endl;
-			std::cout << "---" << std::endl;
-			std::cout << RMotors.get_position(0) << std::endl;
-			std::cout << RMotors.get_position(1) << std::endl;
-			std::cout << RMotors.get_position(2) << std::endl;
-			std::cout << "---------------------------" << std::endl;
+			std::cout << "Hue: " << Optical.get_hue() << std::endl;
+			std::cout << "Saturation: " << Optical.get_saturation() << std::endl;
+			std::cout << "Brightness: " << Optical.get_brightness() << std::endl;
+			std::cout << "kickerOn: " << kickerOn << std::endl;
+			std::cout << "-----------------------" << std::endl;
 		}
 		*/
 

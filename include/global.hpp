@@ -18,11 +18,14 @@ extern pros::adi::DigitalOut VerticalWingPistons;
 
 extern pros::IMU Inertial;
 
+extern pros::Optical Optical;
+
 extern std::array<std::string,2> MotorNameList;
 extern std::array<pros::Motor,2> MotorObjectList;
 
 extern bool kickerOn;
 extern bool drivetrainReversed;
+extern bool manualKicker;
 
 extern void ControllerDisplay();
 
