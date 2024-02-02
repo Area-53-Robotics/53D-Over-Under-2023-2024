@@ -18,9 +18,11 @@ extern pros::ADIDigitalOut VerticalWingPistons;
 extern pros::ADIDigitalOut HangingMech;
 
 extern pros::IMU Inertial;
+extern pros::Optical Optical;
 
 extern bool kickerOn;
 extern bool drivetrainReversed;
+extern bool manualKicker;
 
 extern void ControllerDisplay();
 

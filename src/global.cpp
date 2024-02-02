@@ -21,29 +21,33 @@ pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
-pros::Motor KickerMotor(11, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor KickerMotor(12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7,pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
-pros::ADIDigitalOut HorizontalWingPistons('a');
-pros::ADIDigitalOut VerticalWingPistons('b');
-pros::ADIDigitalOut HangingMech('c');
+pros::ADIDigitalOut HorizontalWingPistons('c');
+pros::ADIDigitalOut VerticalWingPistons('a');
+pros::ADIDigitalOut HangingMech('b');
 
 // Inertial Sensor
 pros::IMU Inertial(4);
+
+pros::Optical Optical(6);
 
 // Boolean variable representing whether the kicker is on or not
 bool kickerOn = false;
 // Boolean variable represeting whether the drivetrain is set to drive in reverse or not
 bool drivetrainReversed = false;
 
+bool manualKicker = true;
+
 // Prints driver control information onto the controller for the driver to view
 void ControllerDisplay() {
     if(!drivetrainReversed) controller.print(0, 0, "Reversed: false");
     else if(drivetrainReversed) controller.print(0, 0, "Reversed: true");
     pros::delay(50);
-    if(!kickerOn) controller.print(1, 0, "Kicker: Deactivated");
-    else if(kickerOn) controller.print(1, 0, "Kicker: Activated");
+    if(manualKicker) controller.print(1, 0, "Kicker: Manual");
+    else if(!manualKicker) controller.print(1, 0, "Kicker: Automatic");
 }
 
 /*

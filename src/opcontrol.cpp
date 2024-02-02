@@ -21,10 +21,14 @@ float GetCurveOutput(int input) {
 void opcontrol()
 {
 	autonomous();
-	/*
+	// /*
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
+
+	Optical.set_led_pwm(100);
+
+	int count = 0;
 
 	while (true)
 	{
@@ -41,6 +45,13 @@ void opcontrol()
 		{
 			controller.rumble(".");
 			drivetrainReversed = !drivetrainReversed;
+			ControllerDisplay();
+		}
+
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+			controller.rumble(".");
+			manualKicker = !manualKicker;
+			ControllerDisplay();
 		}
 
 		if(!drivetrainReversed) {
@@ -55,6 +66,9 @@ void opcontrol()
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
 			ToggleHorizontalPneumaticWings();
 
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
+			ToggleVerticalPneumaticWings();
+
 		// Allows L1 and L2 to move the intake forward and backwards respectively
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
 			IntakeMotor.move(127);
@@ -64,8 +78,13 @@ void opcontrol()
 			IntakeMotor.brake();
 		
 		// When R2 is pressed, the activation of the kicker is toggled
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
-			kickerOn = !kickerOn;
+		if(manualKicker) {
+			if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
+				kickerOn = !kickerOn;
+		} else {
+			if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
+			else kickerOn = false;
+		}
 
 		// If the kicker is supposed to be on...
 		if(kickerOn) {
@@ -77,8 +96,18 @@ void opcontrol()
 			KickerMotor.brake();
 		}
 
+		count++;
+
+		if (count % 40 == 0) {
+			std::cout << "Hue: " << Optical.get_hue() << std::endl;
+			std::cout << "Saturation: " << Optical.get_saturation() << std::endl;
+			std::cout << "Brightness: " << Optical.get_brightness() << std::endl;
+			std::cout << "manualKicker: ";
+			std::cout << "-----------------------" << std::endl;
+		}
+
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);
 	}
-	*/
+	// */
 }

@@ -29,10 +29,17 @@ void initialize() {
 
 	pros::lcd::register_btn1_cb(on_center_button);
 
-	// Calibrates the LemLib chassis (takes 3 seconds)
+
+	// Sets the kicker motor to hold its position when it is stopped
+	KickerMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	KickerMotor.brake();
+	// Clears the controller screen
+	controller.clear();
+	// Resets the inertial sensor readings
 	Inertial.reset();
+	// Calibrates the LemLib chassis (takes 3 seconds)
 	chassis.calibrate(false);
-	pros::delay(3000);
+	// pros::delay(3000);
 
 	/*
 	 pros::Task screenTask([&]() {
@@ -102,14 +109,6 @@ void initialize() {
 			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			break;
 	}
-
-	// Sets the kicker motor to hold its position when it is stopped
-	KickerMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
-	KickerMotor.brake();
-	// Clears the controller screen
-	controller.clear();
-	// Resets the inertial sensor readings
-	Inertial.reset();
 }
 
 /**
