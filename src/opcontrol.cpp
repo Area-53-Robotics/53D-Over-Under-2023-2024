@@ -80,7 +80,6 @@ void opcontrol()
 			else kickerOn = false;
 		}
 		
-
 		if(kickerOn) {
 			KickerMotor.move(110);
 		} else {
@@ -90,14 +89,14 @@ void opcontrol()
 		count++;
 
 		/*
+		*/
 		if (count % 40 == 0) {
 			std::cout << "Hue: " << Optical.get_hue() << std::endl;
 			std::cout << "Saturation: " << Optical.get_saturation() << std::endl;
 			std::cout << "Brightness: " << Optical.get_brightness() << std::endl;
-			std::cout << "kickerOn: " << kickerOn << std::endl;
+			std::cout << "manualKicker: ";
 			std::cout << "-----------------------" << std::endl;
 		}
-		*/
 
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);
