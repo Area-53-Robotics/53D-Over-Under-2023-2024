@@ -6,10 +6,10 @@ void drive(double length) {
 }
 
 void drive(double length, unsigned short int velocity) {
-	length *= 360;
 	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
 	LMotors.move_relative(length, velocity);
 	RMotors.move_relative(length, velocity);
+	while(LMotors.get_actual_velocity(1) > 0 || RMotors.get_actual_velocity(1) > 0) pros::delay(1);
 }
 
 //* The robot turns in the given direction at the given length
@@ -85,7 +85,7 @@ void AutonTurned(double length,unsigned short int delay){
  */
 void autonomous() {
 	GamePhase = 2;
-	autonSelect = 2;
+	// autonSelect = 2;
 	// if(pros::competition::is_connected()) autonSelect = 1;
 	// setStartingOdomValues();
 	// pros::delay(500);
@@ -109,9 +109,9 @@ void autonomous() {
 			// Controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
 			VerticalWingPistons.set_value(1);
-			AutonDrive(800,1000);
+			AutonDrive(2.2,1000); // 800 deg
 			AutonIntake(1000,true);
-			AutonDrive(-1500,1000);
+			AutonDrive(-4,1000); // 1500 deg
 			LMotors.move_relative(10.5,600);
 			
 			
@@ -133,6 +133,16 @@ void autonomous() {
 			break;
 		case 4:
 			// Controller.print(0, 0, "Right Elims Auton");
+			// temporarily using this auton for the basic triball push
+			AutonDrive(300, 450);
+			pros::delay(5000);
+			/*
+			AutonDrive(40, 2000);
+			AutonIntake(2000, true);
+			AutonDrive(-10, 1000);
+			AutonDrive(15, 2000);
+			AutonDrive(-10, 1000);
+			*/
 			// Controller.print(1, 0, "Auton Completed");
 			break;
 		case 5:

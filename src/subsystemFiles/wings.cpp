@@ -30,12 +30,12 @@ void ToggleVerticalPneumaticWings() {
         verticalWingsActivated = false;
     }
 }
-void ToggleHangingMech(){
+void ToggleHangingMech() {
     if(!hangingMechActivated){
         HangingMechPistons.set_value(1);
-        hangingMechActivated=true;        
+        hangingMechActivated = true;        
     }else{
         HangingMechPistons.set_value(0);
-        hangingMechActivated=false;
+        hangingMechActivated = false;
     }
 }

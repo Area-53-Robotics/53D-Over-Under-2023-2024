@@ -9,8 +9,7 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 //creates motor groups
 pros::MotorGroup LMotors({-8, -9, -10}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
-pros::MotorGroup RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
-
+pros::MotorGroup RMotors({18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);/**/
 pros::MotorGroup Drivetrain({-8, -9, -10, 18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 pros::MotorGroup LTDrivetrain({-8, -9, -10, -18, -19, -20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
 pros::MotorGroup RTDrivetrain({8, 9, 10, 18, 19, 20}, pros::v5::MotorGears::blue, pros::v5::MotorEncoderUnits::rotations);
@@ -21,8 +20,8 @@ pros::Motor KickerMotor(12, pros::v5::MotorGears::red, pros::v5::MotorUnits::deg
 pros::Motor IntakeMotor(7, pros::v5::MotorGears::blue);
 
 // Initializes a DigitalOut object to control the pneumatic wings.
-pros::adi::DigitalOut HorizontalWingPistons('c');
-pros::adi::DigitalOut VerticalWingPistons('a');
+pros::adi::DigitalOut HorizontalWingPistons('a');
+pros::adi::DigitalOut VerticalWingPistons('c');
 pros::adi::DigitalOut HangingMechPistons('b');
 
 pros::IMU Inertial(1);
@@ -55,7 +54,7 @@ void ControllerDisplay() {
     6: No Auton
     7: Programming Skills
 */
-unsigned short int autonSelect = 2;
+unsigned short int autonSelect = 4;
 
 /*
 *   Integer variable to represent the current game phase: 

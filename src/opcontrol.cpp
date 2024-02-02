@@ -21,7 +21,7 @@ float GetCurveOutput(int input) {
 void opcontrol()
 {
 	// if(!pros::competition::is_connected) autonomous(); -- this line of code doesn't work for some reason
-//	autonomous();
+	autonomous();
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
@@ -61,8 +61,14 @@ void opcontrol()
 			RMotors.move(GetCurveOutput(rightAxis));
 		}
 			
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
 			ToggleHorizontalPneumaticWings();
+
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1))
+			ToggleVerticalPneumaticWings();
+
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+			ToggleHangingMech();
 
 		// Allows L1 and L2 to move the intake forward and backwards.
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
@@ -73,7 +79,7 @@ void opcontrol()
 			IntakeMotor.brake();
 
 		if(manualKicker) {
-			if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
+			if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
 				kickerOn = !kickerOn;
 		} else {
 			if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
@@ -81,7 +87,7 @@ void opcontrol()
 		}
 		
 		if(kickerOn) {
-			KickerMotor.move(110);
+			KickerMotor.move(127);
 		} else {
 			KickerMotor.brake();
 		}
