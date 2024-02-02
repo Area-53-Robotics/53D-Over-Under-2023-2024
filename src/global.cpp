@@ -8,21 +8,21 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 */
 
 // Left Drivetrain Motors
-pros::Motor BLMotor(-8, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor MLMotor(-9, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor FLMotor(-10, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor BLMotor(-8, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor MLMotor(-9, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor FLMotor(-3, pros::E_MOTOR_GEAR_BLUE);
 
 // Right Drivetrain Motors
-pros::Motor BRMotor(18, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor MRMotor(19, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor BRMotor(18, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor MRMotor(19, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
 
 // Drivetrain Motor Groups
 pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
-pros::Motor KickerMotor(12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
-pros::Motor IntakeMotor(7,pros::E_MOTOR_GEAR_BLUE);
+pros::Motor KickerMotor(12, pros::E_MOTOR_GEAR_RED);
+pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
 pros::ADIDigitalOut HorizontalWingPistons('a');
@@ -61,7 +61,7 @@ void ControllerDisplay() {
     6: No Auton
     7: Programming Skills
 */
-unsigned short int autonSelect = 0;
+unsigned short int autonSelect = 2;
 
 /*
     Integer variable to represent the current game phase
