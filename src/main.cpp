@@ -30,8 +30,11 @@ void initialize() {
 	pros::lcd::register_btn1_cb(on_center_button);
 
 	// Calibrates the LemLib chassis (takes 3 seconds)
-	chassis.calibrate();
+	Inertial.reset();
+	chassis.calibrate(false);
+	pros::delay(3000);
 
+	/*
 	 pros::Task screenTask([&]() {
         lemlib::Pose pose(0, 0, 0);
         while (true) {
@@ -45,6 +48,21 @@ void initialize() {
             pros::delay(50);
         }
     });
+	*/
+
+	pros::Task terminalTask([&]() {
+        lemlib::Pose pose(0, 0, 0);
+        while (true) {
+            // print robot location to the brain screen
+            std::cout << "X: " << chassis.getPose().x << std::endl; // x
+            std::cout << "Y: " << chassis.getPose().y << std::endl; // y
+            std::cout << "Theta: " << chassis.getPose().theta << std::endl; // heading
+            std::cout << "Inertial: " << Inertial.get_heading() << std::endl; // heading
+            // delay to save resources
+            pros::delay(500);
+        }
+    });
+
 	/*
 	* Sets the starting X coordinate, Y coordinate, and
 	* orientation of the robot in the program depending on which
@@ -53,7 +71,7 @@ void initialize() {
 	switch (autonSelect) {
 		case 0:
 			// Odom Tests
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
+			chassis.setPose(lemlib::Pose(0, 0, 0)); // X, Y, Heading (degrees)
 			break;
 		case 1:
 			// Left Quals

@@ -8,14 +8,14 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 */
 
 // Left Drivetrain Motors
-pros::Motor BLMotor(-8, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor MLMotor(-9, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor FLMotor(-10, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor BLMotor(-8, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor MLMotor(-9, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor FLMotor(-10, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
 
 // Right Drivetrain Motors
-pros::Motor BRMotor(18, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor MRMotor(19, pros::E_MOTOR_GEAR_BLUE);
-pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor BRMotor(18, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor MRMotor(19, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE, pros::E_MOTOR_ENCODER_DEGREES);
 
 // Drivetrain Motor Groups
 pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
@@ -30,7 +30,7 @@ pros::ADIDigitalOut VerticalWingPistons('b');
 pros::ADIDigitalOut HangingMech('c');
 
 // Inertial Sensor
-pros::IMU Inertial(1);
+pros::IMU Inertial(4);
 
 // Boolean variable representing whether the kicker is on or not
 bool kickerOn = false;
@@ -57,7 +57,7 @@ void ControllerDisplay() {
     6: No Auton
     7: Programming Skills
 */
-unsigned short int autonSelect = 2;
+unsigned short int autonSelect = 0;
 
 /*
     Integer variable to represent the current game phase

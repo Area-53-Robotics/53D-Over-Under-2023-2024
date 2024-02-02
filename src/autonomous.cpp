@@ -66,9 +66,12 @@ void autonomous() {
 	// Informs the program that the robot is in the autonomous phase
 	GamePhase = 1;
 	// Sets the auton to the "Left Quals" auton
-	autonSelect = 1;
+	// autonSelect = 1;
 	
 	switch (autonSelect) {
+		case 0:
+			chassis.moveToPoint(0, 15, 5000, false);	
+			break;
 		// LemLib left quals auton in progress
 		case 1:
 			controller.print(0, 0, "Left Quals Auton");
