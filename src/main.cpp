@@ -36,9 +36,9 @@ void initialize() {
 	// Clears the controller screen
 	controller.clear();
 	// Resets the inertial sensor readings
-	Inertial.reset();
+	// Inertial.reset();
 	// Calibrates the LemLib chassis (takes 3 seconds)
-	chassis.calibrate(false);
+	chassis.calibrate();
 	// pros::delay(3000);
 
 	/*

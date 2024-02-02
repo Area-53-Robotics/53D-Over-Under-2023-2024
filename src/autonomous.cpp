@@ -94,11 +94,10 @@ void autonomous() {
 		case 2:
 			controller.print(0, 0, "Right Quals Auton");
 			// Pushes triball
-			drive(2, 450);
+			drive(4.8, 450);
 			pros::delay(1000);
 			AutonIntake(1000, true);
-			drive(1, 450);
-			drive(-1, 450);
+			drive(-4.5,450);
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
