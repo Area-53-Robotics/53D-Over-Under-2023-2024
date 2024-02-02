@@ -20,15 +20,15 @@ float GetCurveOutput(int input) {
  */
 void opcontrol()
 {
-	autonomous();
+	// autonomous();
 	// /*
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
 
-	Optical.set_led_pwm(100);
-
 	int count = 0;
+
+	Optical.set_led_pwm(100);
 
 	while (true)
 	{
@@ -63,11 +63,14 @@ void opcontrol()
 		}
 		
 		// When LEFT is pressed, toggles the activation of the wings
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_LEFT))
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
 			ToggleHorizontalPneumaticWings();
 
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1))
 			ToggleVerticalPneumaticWings();
+
+		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
+			ToggleHangingMech();
 
 		// Allows L1 and L2 to move the intake forward and backwards respectively
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
@@ -79,7 +82,7 @@ void opcontrol()
 		
 		// When R2 is pressed, the activation of the kicker is toggled
 		if(manualKicker) {
-			if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
+			if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
 				kickerOn = !kickerOn;
 		} else {
 			if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
@@ -89,7 +92,7 @@ void opcontrol()
 		// If the kicker is supposed to be on...
 		if(kickerOn) {
 			// Then the kicker motor continuously rotates downwards at 87% speed (so that it can hit the slip gear to shoot)
-			KickerMotor.move(110);
+			KickerMotor.move(127);
 		// If the kicker is supposed to be off...
 		} else {
 			// Then the kicker brakes and holds its current position
@@ -98,6 +101,7 @@ void opcontrol()
 
 		count++;
 
+		/*
 		if (count % 40 == 0) {
 			std::cout << "Hue: " << Optical.get_hue() << std::endl;
 			std::cout << "Saturation: " << Optical.get_saturation() << std::endl;
@@ -105,6 +109,7 @@ void opcontrol()
 			std::cout << "manualKicker: ";
 			std::cout << "-----------------------" << std::endl;
 		}
+		*/
 
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);

@@ -25,8 +25,8 @@ pros::Motor KickerMotor(12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREE
 pros::Motor IntakeMotor(7,pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
-pros::ADIDigitalOut HorizontalWingPistons('c');
-pros::ADIDigitalOut VerticalWingPistons('a');
+pros::ADIDigitalOut HorizontalWingPistons('a');
+pros::ADIDigitalOut VerticalWingPistons('c');
 pros::ADIDigitalOut HangingMech('b');
 
 // Inertial Sensor
