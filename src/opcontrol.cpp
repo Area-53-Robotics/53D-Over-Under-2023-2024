@@ -20,8 +20,8 @@ float GetCurveOutput(int input) {
  */
 void opcontrol()
 {
-	// autonomous();
-	// /*
+	autonomous();
+	/*
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
@@ -86,6 +86,7 @@ void opcontrol()
 				kickerOn = !kickerOn;
 		} else {
 			if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
+			// else if(KickerMotor.get_position() < 1280) kickerOn = true;
 			else kickerOn = false;
 		}
 
@@ -101,7 +102,6 @@ void opcontrol()
 
 		count++;
 
-		/*
 		if (count % 40 == 0) {
 			std::cout << "Hue: " << Optical.get_hue() << std::endl;
 			std::cout << "Saturation: " << Optical.get_saturation() << std::endl;
@@ -109,10 +109,9 @@ void opcontrol()
 			std::cout << "manualKicker: ";
 			std::cout << "-----------------------" << std::endl;
 		}
-		*/
 
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);
 	}
-	// */
+	*/
 }

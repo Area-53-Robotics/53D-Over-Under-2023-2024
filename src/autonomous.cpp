@@ -70,14 +70,15 @@ void autonomous() {
 	
 	switch (autonSelect) {
 		case 0:
-			chassis.moveToPoint(0, 15, 5000, false);	
+			chassis.moveToPoint(0, 30, 50000);
+			// chassis.turnTo(45, 45, 5000);
 			break;
 		// LemLib left quals auton in progress
 		case 1:
 			controller.print(0, 0, "Left Quals Auton");
 			/*chassis.moveToPoint(0,8,1500);
 			AutonIntake(1000,false);
-			chassis.moveToPoint(0, -15, 5000, false);	
+			chassis.moveToPoint(0, -15, 5000, false);
 			chassis.turnTo(10,0,100);
 			chassis.moveToPoint(0,-35,5000,false);
 			chassis.turnTo(90,0,100,false);

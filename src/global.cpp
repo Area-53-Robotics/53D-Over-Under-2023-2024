@@ -21,7 +21,7 @@ pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
 pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
-pros::Motor KickerMotor(12, pros::E_MOTOR_GEAR_RED);
+pros::Motor KickerMotor(12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
@@ -53,6 +53,7 @@ void ControllerDisplay() {
 /*
     Integer variable representing which auton is set to run during the autonomous phase
 
+    0: Odom Tests
     1: Left Quals
     2: Right Quals
     3: Left Elims
@@ -61,7 +62,7 @@ void ControllerDisplay() {
     6: No Auton
     7: Programming Skills
 */
-unsigned short int autonSelect = 2;
+unsigned short int autonSelect = 0;
 
 /*
     Integer variable to represent the current game phase
@@ -75,9 +76,9 @@ unsigned short int GamePhase = 1;
 // LemLib drivetrain configuration
 lemlib::Drivetrain drivetrain{
     &LMotors, // left drivetrain motors
-    &RMotors, // right drivetrain motors
+    &RMotors, // right drivetrain motor
     10.35, // track width
-    3.25, // wheel diameter
+    2.25, // wheel diameter
     450, // wheel rpm
     8 // chase power
 };
@@ -95,7 +96,7 @@ lemlib::OdomSensors sensors{
 lemlib::ControllerSettings linearController(
     10,   // proportional gain (kP)
     0,    // integral gain (kI)
-    35,   // derivative gain (kD)
+    32,   // derivative gain (kD)
     3,    // anti windup
     1,    // small error range, in inches
     100,  // small error range timeout, in milliseconds
@@ -106,15 +107,15 @@ lemlib::ControllerSettings linearController(
 
 // Angular Motion Controller
 lemlib::ControllerSettings angularController(
-    1,     // proportional gain (kP)
+    2,     // proportional gain (kP)
     0,  // integral gain (kI)
-    0,    // derivative gain (kD)
+    10,    // derivative gain (kD)
     3,     // anti windup
     1,     // small error range, in degrees
     100,   // small error range timeout, in milliseconds
     3,     // large error range, in degrees
     500,   // large error range timeout, in milliseconds
-    10     // maximum acceleration (slew)
+    5     // maximum acceleration (slew)
 );
  
 // Creates the LemLib chassis
