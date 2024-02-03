@@ -70,46 +70,6 @@ void initialize() {
             pros::delay(500);
         }
     });
-
-	/*
-	* Sets the starting X coordinate, Y coordinate, and
-	* orientation of the robot in the program depending on which
-	* autonomous is being used.
-	*/
-	switch (autonSelect) {
-		case 0:
-			// Odom Tests
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			break;
-		case 1:
-			// Left Quals
-			chassis.setPose(23,58, 90); // X, Y, Heading (degrees)
-			break;
-		case 2:
-			// Right Quals
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			break;
-		case 3:
-			// Left Elims
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			break;
-		case 4:
-			// Right Elims
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			break;
-		case 5:
-			// Full Autonomous Win Point
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			break;
-		case 6:
-			// No Auton
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			break;
-		case 7:
-			// Programming Skills
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			break;
-	}
 }
 
 /**

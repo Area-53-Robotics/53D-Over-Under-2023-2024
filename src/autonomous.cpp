@@ -70,62 +70,88 @@ void autonomous() {
 	
 	switch (autonSelect) {
 		case 0:
+			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			chassis.moveToPoint(0, 30, 50000);
 			// chassis.turnTo(45, 45, 5000);
 			break;
-		// LemLib left quals auton in progress
 		case 1:
 			controller.print(0, 0, "Left Quals Auton");
-			/*chassis.moveToPoint(0,8,1500);
-			AutonIntake(1000,false);
-			chassis.moveToPoint(0, -15, 5000, false);
-			chassis.turnTo(10,0,100);
-			chassis.moveToPoint(0,-35,5000,false);
-			chassis.turnTo(90,0,100,false);
-			chassis.moveToPoint(0,-15,1000,false); */
-			chassis.moveToPoint(0,15,1500);
-			//AutonWings(1500,false);
-			chassis.turnTo(90,0,100);
-			AutonIntake(1000,true);
-			chassis.moveToPoint(0,45,1500);
-			chassis.moveToPoint(0,-10,1500,false);
-			chassis.moveToPoint(0,8,1500);
+			chassis.setPose(-48, -60, 135); // X, Y, Heading (degrees)
+			ToggleVerticalPneumaticWings();
+			pros::delay(500);
+			chassis.turnTo(0, 0, 2000);
+			pros::delay(500);
+			chassis.turnTo(0, -60, 2000);
+			pros::delay(500);
+			ToggleVerticalPneumaticWings();
+			pros::delay(500);
+			chassis.moveToPoint(-5, -53, 5000);
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
 			controller.print(0, 0, "Right Quals Auton");
-			// Pushes triball
-			drive(4.8, 450);
+			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
+			// ToggleVerticalPneumaticWings();
+			chassis.moveToPoint(0, -18, 3000, false, 75);
 			pros::delay(1000);
-			AutonIntake(1000, true);
-			drive(-4.5,450);
+			// Toggl eVerticalPneumaticWings();
+			chassis.moveToPoint(0, -36, 3000, false, 75);
+			pros::delay(1000);
+			chassis.moveToPoint(0, -15, 3000, true, 75);
+			pros::delay(1000);
+			chassis.moveToPoint(0, -48, 3000, false, 127);
+			pros::delay(1000);
+			chassis.moveToPoint(0, -15, 3000, true, 75);
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
 			controller.print(0, 0, "Left Elims Auton");
-			drive(4.5,2000);
-			AutonIntake(1000, true);
-			drive(1,2000);
-			drive(-1.5,2000);
-			drive(2,2000);
+			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
+
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 4:
 			controller.print(0, 0, "Right Elims Auton");
+			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
+			IntakeMotor.move(127);
+			pros::delay(500);
+			chassis.moveToPoint(0, 5, 2000, 75);
+			pros::delay(1000);
+			ToggleVerticalPneumaticWings();
+			chassis.moveToPoint(0, -48, 5000, false, 75);
+			/*
+			pros::delay(500);
+			chassis.turnTo(24, -48, 5000, false);
+			chassis.moveToPoint(24, -48, 5000, false);
 			controller.print(1, 0, "Auton Completed");
+			*/
 			break;
 		case 5:
 			controller.print(0, 0, "Full AWP");
+			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 6:
 			controller.print(0, 0, "No Auton Selected");
+			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			break;
 		case 7:
 			// Activates the kicker motor for the entire programming skills run
 			controller.print(0, 0, "Programming Skills");
+			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
+			chassis.moveToPoint(0, 16, 2000);
+			pros::delay(500);
+			chassis.turnTo(-22, 16, 2000, false);
+			pros::delay(500);
+			chassis.moveToPoint(-22, 16, 2000, false);
+			pros::delay(500);
+			ToggleVerticalPneumaticWings();
+			pros::delay(500);
+			chassis.turnTo(-22, 40, 2000, false);
+			pros::delay(500);
 			KickerMotor.move(127);
 			pros::delay(45000);
+
 			controller.print(1, 0, "Skills Complete");
 			break;
 	}

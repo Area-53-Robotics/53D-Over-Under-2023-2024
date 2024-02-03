@@ -62,7 +62,7 @@ void ControllerDisplay() {
     6: No Auton
     7: Programming Skills
 */
-unsigned short int autonSelect = 0;
+unsigned short int autonSelect = 7;
 
 /*
     Integer variable to represent the current game phase

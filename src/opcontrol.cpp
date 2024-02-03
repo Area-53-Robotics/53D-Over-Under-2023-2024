@@ -20,8 +20,8 @@ float GetCurveOutput(int input) {
  */
 void opcontrol()
 {
-	autonomous();
-	/*
+	// autonomous();
+	// /*
 	ControllerDisplay();
 	short int leftAxis;
 	short int rightAxis;
@@ -113,5 +113,5 @@ void opcontrol()
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);
 	}
-	*/
+	// */
 }
