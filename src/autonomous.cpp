@@ -1,5 +1,7 @@
 #include "main.h"
 
+ASSET(init_to_goal_txt)
+
 //* The robot drives the given length at the given velocity
 void drive(double length) {
 	drive(length, 600);
@@ -136,21 +138,40 @@ void autonomous() {
 			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			break;
 		case 7:
-			// Activates the kicker motor for the entire programming skills run
-			controller.print(0, 0, "Programming Skills");
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			chassis.moveToPoint(0, 16, 2000);
+			// Currently curves the robot to push a triball into the goal
+			controller.print(0, 0, "Programming Skills - Makhi Version");
+			/*
+			chassis.setPose(-41.75, -64.975, 0); // X, Y, Heading (degrees)
+			chassis.follow(init_to_goal_txt, 1, 5000);
+			*/
+			// chassis.setPose(-34.5, -64.5, 330); // Guide
+			// chassis.turnTo(-60, -24, 5000);
+
+
+			chassis.setPose(-41.75, -64.975, 0); // Against line
+			chassis.moveToPose(-57, -15, 0, 10000);
+			AutonIntake(1000, true);		
+			controller.print(1, 0, "Skills Complete");
+			break;
+		case 8:
+			// Currently gets the kicker into position
+			controller.print(0, 0, "Programming Skills - Ajibola Version");
+			chassis.setPose(-41.75, -64.975, 0); // X, Y, Heading (degrees)
+			chassis.moveToPoint(-41.75, -40.975, 2000);
 			pros::delay(500);
-			chassis.turnTo(-22, 16, 2000, false);
+			chassis.turnTo(-60, -40.975, 2000, false);
 			pros::delay(500);
-			chassis.moveToPoint(-22, 16, 2000, false);
+			chassis.moveToPoint(-60, -40.975, 2000, false);
 			pros::delay(500);
 			ToggleVerticalPneumaticWings();
 			pros::delay(500);
-			chassis.turnTo(-22, 40, 2000, false);
+			chassis.turnTo(0, -12, 2000 * 10000);
 			pros::delay(500);
-			KickerMotor.move(127);
-			pros::delay(45000);
+			// chassis.turnTo(-60, -36, 2000);
+			pros::delay(500);
+			// chassis.moveToPoint(-60, -36, 2000);
+			// KickerMotor.move(127);
+			// pros::delay(45000);
 
 			controller.print(1, 0, "Skills Complete");
 			break;
