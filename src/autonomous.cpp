@@ -66,7 +66,7 @@ void AutonWings(unsigned short int msec, bool activateWings){
  */
 void autonomous() {
 	// Informs the program that the robot is in the autonomous phase
-	GamePhase = 1;
+	GamePhase = 2;
 	// Sets the auton to the "Left Quals" auton
 	// autonSelect = 1;
 	
@@ -156,19 +156,23 @@ void autonomous() {
 		case 8:
 			// Currently gets the kicker into position
 			controller.print(0, 0, "Programming Skills - Ajibola Version");
-			chassis.setPose(-41.75, -64.975, 0); // X, Y, Heading (degrees)
-			chassis.moveToPoint(-41.75, -40.975, 2000);
+			chassis.setPose(-39.75, -64.975, 0); // X, Y, Heading (degrees)
+			chassis.moveToPoint(-40.75, -40.975, 2000);
 			pros::delay(500);
 			chassis.turnTo(-60, -40.975, 2000, false);
 			pros::delay(500);
-			chassis.moveToPoint(-60, -40.975, 2000, false);
+			chassis.moveToPoint(-58, -40.975, 2000, false);
 			pros::delay(500);
 			ToggleVerticalPneumaticWings();
 			pros::delay(500);
-			chassis.turnTo(0, -12, 2000 * 10000);
+			//chassis.turnTo(0, -12, 2000 * 10000);
 			pros::delay(500);
+			//chassis.turnTo(-60, -40.975, 2000,false);
+			//pros::delay(500);
+			//chassis.moveToPoint(-80,-100,2000);
 			// chassis.turnTo(-60, -36, 2000);
-			pros::delay(500);
+			//pros::delay(500);
+			kickerOn=true;
 			// chassis.moveToPoint(-60, -36, 2000);
 			// KickerMotor.move(127);
 			// pros::delay(45000);

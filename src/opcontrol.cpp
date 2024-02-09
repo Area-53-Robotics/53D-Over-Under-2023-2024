@@ -20,7 +20,7 @@ float GetCurveOutput(int input) {
  */
 void opcontrol()
 {
-	// autonomous();
+	//autonomous();
 	// /*
 	ControllerDisplay();
 	short int leftAxis;
