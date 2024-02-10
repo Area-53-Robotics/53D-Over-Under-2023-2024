@@ -91,6 +91,7 @@ void autonomous() {
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
+			// Single triball using  PID (made at Gateway)
 			controller.print(0, 0, "Right Quals Auton");
 			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			// ToggleVerticalPneumaticWings();
@@ -107,12 +108,25 @@ void autonomous() {
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
+			// Left Side Half AWP
 			controller.print(0, 0, "Left Elims Auton");
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-
+			chassis.setPose(-48 - (7 / 2), -60, 135); // X, Y, Heading (degrees)
+			ToggleVerticalPneumaticWings();
+			pros::delay(250);
+			chassis.turnTo(0, -60, 2000);
+			pros::delay(250);
+			chassis.moveToPoint(-45, -60, 2000);
+			ToggleVerticalPneumaticWings();
+			pros::delay(250);
+			chassis.turnTo(0, -60 - 2, 2000);
+			pros::delay(250);
+			chassis.moveToPoint(0 - 20, -60 - 2, 2000);
+			pros::delay(250);
+			AutonIntake(1000, true);
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 4:
+			// in progress in-depth auton
 			controller.print(0, 0, "Right Elims Auton");
 			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			IntakeMotor.move(127);
