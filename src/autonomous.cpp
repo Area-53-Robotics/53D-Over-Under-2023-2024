@@ -66,7 +66,7 @@ void AutonWings(unsigned short int msec, bool activateWings){
  */
 void autonomous() {
 	// Informs the program that the robot is in the autonomous phase
-	GamePhase = 2;
+	GamePhase = 3;
 	// Sets the auton to the "Left Quals" auton
 	// autonSelect = 1;
 	
@@ -95,9 +95,12 @@ void autonomous() {
 			controller.print(0, 0, "Right Quals Auton");
 			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			// ToggleVerticalPneumaticWings();
+			 pros::delay(1000);
+			// chassis.turnTo(0,-30,2000);
+			// ToggleVerticalPneumaticWings();
 			chassis.moveToPoint(0, -18, 3000, false, 75);
-			pros::delay(1000);
-			// Toggl eVerticalPneumaticWings();
+			// ToggleVerticalPneumaticWings();
+			// chassis.moveToPoint(0,-20,3000,false,75);
 			chassis.moveToPoint(0, -36, 3000, false, 75);
 			pros::delay(1000);
 			chassis.moveToPoint(0, -15, 3000, true, 75);
@@ -111,12 +114,12 @@ void autonomous() {
 			// Left Side Half AWP
 			controller.print(0, 0, "Left Elims Auton");
 			chassis.setPose(-48 - (7 / 2), -60, 135); // X, Y, Heading (degrees)
-			ToggleVerticalPneumaticWings();
+			//ToggleVerticalPneumaticWings();
 			pros::delay(250);
 			chassis.turnTo(0, -60, 2000);
 			pros::delay(250);
 			chassis.moveToPoint(-45, -60, 2000);
-			ToggleVerticalPneumaticWings();
+			//ToggleVerticalPneumaticWings();
 			pros::delay(250);
 			chassis.turnTo(0, -60 - 2, 2000);
 			pros::delay(250);
@@ -128,13 +131,13 @@ void autonomous() {
 		case 4:
 			// in progress in-depth auton
 			controller.print(0, 0, "Right Elims Auton");
-			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
-			IntakeMotor.move(127);
-			pros::delay(500);
-			chassis.moveToPoint(0, 5, 2000, 75);
-			pros::delay(1000);
+			chassis.setPose(-48 - (7 / 2), -60, 135); // X, Y, Heading (degrees)
 			ToggleVerticalPneumaticWings();
-			chassis.moveToPoint(0, -48, 5000, false, 75);
+			chassis.turnTo(0, -18, 2000);
+			ToggleVerticalPneumaticWings();
+			chassis.moveToPoint(-30, -18, 2000);
+			AutonIntake(1000,false);
+			chassis.moveToPoint(-30,-40,2000,false);
 			/*
 			pros::delay(500);
 			chassis.turnTo(24, -48, 5000, false);
@@ -162,9 +165,9 @@ void autonomous() {
 			// chassis.turnTo(-60, -24, 5000);
 
 
-			chassis.setPose(-41.75, -64.975, 0); // Against line
-			chassis.moveToPose(-57, -15, 0, 10000);
-			AutonIntake(1000, true);		
+			 // Against line
+			ToggleVerticalPneumaticWings();
+			KickerMotor.move(127);	
 			controller.print(1, 0, "Skills Complete");
 			break;
 		case 8:
