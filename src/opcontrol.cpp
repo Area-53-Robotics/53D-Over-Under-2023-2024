@@ -23,6 +23,7 @@ void opcontrol()
 	//autonomous();
 	// /*
 	ControllerDisplay();
+	// Integer variables to store the current position of the left (Axis 3) and right Y axis (Axis 2) joysticks
 	short int leftAxis;
 	short int rightAxis;
 
@@ -40,11 +41,14 @@ void opcontrol()
 		if(abs(leftAxis) <= 10) leftAxis = 0;
 		if(abs(rightAxis) <= 10) rightAxis = 0;
 		
-		// When the A button is pressed, the drivetrain controls are reversed
+		// When the A button is pressed...
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
 		{
+      		// First, the controller rumbles to alert the driver that the reverse functionality has been activated
 			controller.rumble(".");
+      		// Second, the drivetrain controls are reversed
 			drivetrainReversed = !drivetrainReversed;
+      		// Third, the driver controller display is updated to reflect the reversal of the drive controls
 			ControllerDisplay();
 		}
 
@@ -54,11 +58,17 @@ void opcontrol()
 			ControllerDisplay();
 		}
 
+		// If the drivetrain is not reversed...
 		if(!drivetrainReversed) {
+      		// the left drive moves according to the left joystick
 			LMotors.move(GetCurveOutput(leftAxis));
+      		// and the right drive moves according to the right joystick
 			RMotors.move(GetCurveOutput(rightAxis));
+		// Otherwise, if the drivetrain is reversed...
 		} else {
+      		// the right drive moves according to the reverse of the left joystick
 			RMotors.move(GetCurveOutput(-leftAxis));
+      		// the left drive moves according to the reverse of the right joystick
 			LMotors.move(GetCurveOutput(-rightAxis));
 		}
 		

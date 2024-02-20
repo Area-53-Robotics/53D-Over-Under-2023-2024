@@ -7,14 +7,20 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
     Best Battery: 13
 */
 
-// Left Drivetrain Motors
+// --- Left Drivetrain Motors
+// Initializes the back left motor to port 8, reversed, with a blue gearset
 pros::Motor BLMotor(-8, pros::E_MOTOR_GEAR_BLUE);
+// Initializes the middle left motor to port 9, reversed, with a blue gearset
 pros::Motor MLMotor(-9, pros::E_MOTOR_GEAR_BLUE);
+// Initializes the front left motor to port 3, reversed, with a blue gearset
 pros::Motor FLMotor(-3, pros::E_MOTOR_GEAR_BLUE);
 
-// Right Drivetrain Motors
+// --- Right Drivetrain Motors
+// Initializes the back right motor to port 18 with a blue gearset
 pros::Motor BRMotor(18, pros::E_MOTOR_GEAR_BLUE);
+// Initializes the middle right motor to port 19 with a blue gearset
 pros::Motor MRMotor(19, pros::E_MOTOR_GEAR_BLUE);
+// Initializes the front right motor to port 20 with a blue gearset
 pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
 
 // Drivetrain Motor Groups
