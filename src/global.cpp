@@ -21,13 +21,12 @@ pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
 pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
-pros::Motor KickerMotor(12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor KickerMotor(-12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
-pros::ADIDigitalOut HorizontalWingPistons('a');
-pros::ADIDigitalOut VerticalWingPistons('c');
-pros::ADIDigitalOut HangingMech('b');
+pros::ADIDigitalOut HorizontalWingPistons('b');
+pros::ADIDigitalOut VerticalWingPistons('a');
 
 // Inertial Sensor
 pros::IMU Inertial(4);

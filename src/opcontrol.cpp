@@ -69,9 +69,6 @@ void opcontrol()
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1))
 			ToggleVerticalPneumaticWings();
 
-		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_RIGHT))
-			ToggleHangingMech();
-
 		// Allows L1 and L2 to move the intake forward and backwards respectively
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
 			IntakeMotor.move(127);
@@ -80,24 +77,30 @@ void opcontrol()
 		else
 			IntakeMotor.brake();
 		
-		// When R2 is pressed, the activation of the kicker is toggled
-		if(manualKicker) {
-			if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
-				kickerOn = !kickerOn;
-		} else {
-			if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
-			// else if(KickerMotor.get_position() < 1280) kickerOn = true;
-			else kickerOn = false;
-		}
+		if (false) {
+			// When R2 is pressed, the activation of the kicker is toggled
+			if(manualKicker) {
+				if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
+					kickerOn = !kickerOn;
+			} else {
+				if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
+				// else if(KickerMotor.get_position() < 1280) kickerOn = true;
+				else kickerOn = false;
+			}
 
-		// If the kicker is supposed to be on...
-		if(kickerOn) {
-			// Then the kicker motor continuously rotates downwards at 87% speed (so that it can hit the slip gear to shoot)
-			KickerMotor.move(127);
-		// If the kicker is supposed to be off...
+			// If the kicker is supposed to be on...
+			if(kickerOn) {
+				// Then the kicker motor continuously rotates downwards at 87% speed (so that it can hit the slip gear to shoot)
+				KickerMotor.move(127);
+			// If the kicker is supposed to be off...
+			} else {
+				// Then the kicker brakes and holds its current position
+				KickerMotor.brake();
+			}
 		} else {
-			// Then the kicker brakes and holds its current position
-			KickerMotor.brake();
+			if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) KickerMotor.move(127);
+			else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) KickerMotor.move(-127);
+			else KickerMotor.brake();
 		}
 
 		count++;
