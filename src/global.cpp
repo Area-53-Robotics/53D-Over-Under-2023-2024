@@ -27,6 +27,7 @@ pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
 pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
+// Initializes the kicker motor to port 12, reversed, with a red (torque) gearset
 pros::Motor KickerMotor(-12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
@@ -37,6 +38,7 @@ pros::ADIDigitalOut VerticalWingPistons('a');
 // Inertial Sensor
 pros::IMU Inertial(4);
 
+// Initializes the Optical Sensor to port 6
 pros::Optical Optical(6);
 
 // Boolean variable representing whether the kicker is on or not
@@ -44,6 +46,7 @@ bool kickerOn = false;
 // Boolean variable represeting whether the drivetrain is set to drive in reverse or not
 bool drivetrainReversed = false;
 
+// Boolean variable representing whether manual mode is activated (true) or automatic mode is activated (false)
 bool manualKicker = true;
 
 // Prints driver control information onto the controller for the driver to view

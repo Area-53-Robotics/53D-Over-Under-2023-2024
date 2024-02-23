@@ -29,6 +29,7 @@ void opcontrol()
 
 	int count = 0;
 
+	// Activates the white LED light on the optical sensor
 	Optical.set_led_pwm(100);
 
 	while (true)
@@ -41,10 +42,10 @@ void opcontrol()
 		if(abs(leftAxis) <= 10) leftAxis = 0;
 		if(abs(rightAxis) <= 10) rightAxis = 0;
 		
-		// When the A button is pressed...
+		// When the A button on the controller is pressed...
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_A))
 		{
-      		// First, the controller rumbles to alert the driver that the reverse functionality has been activated
+      		// First, the controller rumbles to alert the driver that kicker control mode has been toggled
 			controller.rumble(".");
       		// Second, the drivetrain controls are reversed
 			drivetrainReversed = !drivetrainReversed;
@@ -52,9 +53,13 @@ void opcontrol()
 			ControllerDisplay();
 		}
 
+		// When the Y button on the controller is pressed...
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_Y)) {
+      		// First, the controller rumbles to alert the driver that the reverse functionality has been activated
 			controller.rumble(".");
+			// Second, the kicker toggles its control mode from manual to the opposite of its current state
 			manualKicker = !manualKicker;
+			// Third, the driver controller display is updated to reflect the change in kicker control mode
 			ControllerDisplay();
 		}
 
@@ -88,13 +93,17 @@ void opcontrol()
 			IntakeMotor.brake();
 		
 		if (false) {
-			// When R2 is pressed, the activation of the kicker is toggled
+			// If the kicker is in manual control mode...
 			if(manualKicker) {
+				// Then when B is pressed...
 				if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_B))
+					// The ki	cker toggles activation between off and on
 					kickerOn = !kickerOn;
+			// Otherwise, if the kicker is in automatic control mode...
 			} else {
+				// Then if the color sensor detects an object in the green hue range (65-80), the kicker is activated
 				if(Optical.get_hue() > 65 && Optical.get_hue() < 80) kickerOn = true;
-				// else if(KickerMotor.get_position() < 1280) kickerOn = true;
+				// Otherwise, the kicker is set to not move
 				else kickerOn = false;
 			}
 
@@ -102,7 +111,7 @@ void opcontrol()
 			if(kickerOn) {
 				// Then the kicker motor continuously rotates downwards at 87% speed (so that it can hit the slip gear to shoot)
 				KickerMotor.move(127);
-			// If the kicker is supposed to be off...
+			// Otherwise, if the kicker is supposed to be off...
 			} else {
 				// Then the kicker brakes and holds its current position
 				KickerMotor.brake();

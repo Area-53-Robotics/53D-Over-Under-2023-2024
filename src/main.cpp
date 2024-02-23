@@ -32,6 +32,7 @@ void initialize() {
 
 	// Sets the kicker motor to hold its position when it is stopped
 	KickerMotor.set_brake_mode(pros::E_MOTOR_BRAKE_HOLD);
+	// Brakes the kicker motor when the program is initialized
 	KickerMotor.brake();
 	// Clears the controller screen
 	controller.clear();
