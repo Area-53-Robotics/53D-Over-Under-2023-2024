@@ -9,17 +9,17 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 // --- Left Drivetrain Motors
 // Initializes the back left motor to port 8, reversed, with a blue gearset
-pros::Motor BLMotor(-8, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor BLMotor(-1, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the middle left motor to port 9, reversed, with a blue gearset
-pros::Motor MLMotor(-9, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor MLMotor(-11, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the front left motor to port 3, reversed, with a blue gearset
-pros::Motor FLMotor(-3, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor FLMotor(-2, pros::E_MOTOR_GEAR_BLUE);
 
 // --- Right Drivetrain Motors
 // Initializes the back right motor to port 18 with a blue gearset
-pros::Motor BRMotor(18, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor BRMotor(10, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the middle right motor to port 19 with a blue gearset
-pros::Motor MRMotor(19, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor MRMotor(9, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the front right motor to port 20 with a blue gearset
 pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
 
@@ -28,7 +28,7 @@ pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
 // Initializes the kicker motor to port 12, reversed, with a red (torque) gearset
-pros::Motor KickerMotor(-12, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor KickerMotor(-18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
@@ -36,7 +36,7 @@ pros::ADIDigitalOut HorizontalWingPistons('b');
 pros::ADIDigitalOut VerticalWingPistons('a');
 
 // Inertial Sensor
-pros::IMU Inertial(4);
+pros::IMU Inertial(8);
 
 // Initializes the Optical Sensor to port 6
 pros::Optical Optical(6);
@@ -69,8 +69,9 @@ void ControllerDisplay() {
     5: Full Autonomous Win Point
     6: No Auton
     7: Programming Skills
+    8: Makhi Programming Skills
 */
-unsigned short int autonSelect = 3;
+unsigned short int autonSelect = 8;
 
 /*
     Integer variable to represent the current game phase

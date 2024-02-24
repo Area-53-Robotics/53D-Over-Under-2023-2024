@@ -21,7 +21,6 @@ float GetCurveOutput(int input) {
 void opcontrol()
 {
 	//autonomous();
-	// /*
 	ControllerDisplay();
 	// Integer variables to store the current position of the left (Axis 3) and right Y axis (Axis 2) joysticks
 	short int leftAxis;
@@ -135,5 +134,4 @@ void opcontrol()
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);
 	}
-	// */
 }

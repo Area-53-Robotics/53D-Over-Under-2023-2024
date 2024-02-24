@@ -113,7 +113,7 @@ void autonomous() {
 		case 3:
 			// Left Side Half AWP
 			controller.print(0, 0, "Left Elims Auton");
-			chassis.setPose(-48 - (7 / 2), -60, 135); // X, Y, Heading (degrees)
+			chassis.setPose(-48 - (7.0 / 2), -60, 135); // X, Y, Heading (degrees)
 			//ToggleVerticalPneumaticWings();
 			pros::delay(250);
 			chassis.turnTo(0, -60, 2000);
@@ -131,7 +131,7 @@ void autonomous() {
 		case 4:
 			// in progress in-depth auton
 			controller.print(0, 0, "Right Elims Auton");
-			chassis.setPose(-48 - (7 / 2), -60, 135); // X, Y, Heading (degrees)
+			chassis.setPose(-48 - (7.0 / 2), -60, 135); // X, Y, Heading (degrees)
 			ToggleVerticalPneumaticWings();
 			chassis.turnTo(0, -18, 2000);
 			ToggleVerticalPneumaticWings();
@@ -155,22 +155,6 @@ void autonomous() {
 			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
 			break;
 		case 7:
-			// Currently curves the robot to push a triball into the goal
-			controller.print(0, 0, "Programming Skills - Makhi Version");
-			/*
-			chassis.setPose(-41.75, -64.975, 0); // X, Y, Heading (degrees)
-			chassis.follow(init_to_goal_txt, 1, 5000);
-			*/
-			// chassis.setPose(-34.5, -64.5, 330); // Guide
-			// chassis.turnTo(-60, -24, 5000);
-
-
-			 // Against line
-			ToggleVerticalPneumaticWings();
-			KickerMotor.move(127);	
-			controller.print(1, 0, "Skills Complete");
-			break;
-		case 8:
 			// Currently gets the kicker into position
 			controller.print(0, 0, "Programming Skills - Ajibola Version");
 			chassis.setPose(-39.75, -64.975, 0); // X, Y, Heading (degrees)
@@ -193,6 +177,20 @@ void autonomous() {
 			// chassis.moveToPoint(-60, -36, 2000);
 			// KickerMotor.move(127);
 			// pros::delay(45000);
+
+			controller.print(1, 0, "Skills Complete");
+			break;
+		case 8:
+			// Currently curves the robot to push a triball into the goal
+			controller.print(0, 0, "Programming Skills - Makhi Version");
+
+			chassis.setPose(-72 + 26.5, -60, 133); // X, Y, Heading (degrees)
+			chassis.moveToPose(-60 + 5, -24 + 24, 180, 2500, {.forwards = false, .chasePower = 8});
+			chassis.waitUntilDone();
+			chassis.setPose(-72 + 26.5, -29.25, 180); // X, Y, Heading (degrees)
+			chassis.moveToPose(-48, -48 + 8, 60, 2500, {.forwards = false, .chasePower = 8});
+			// chassis.moveToPose(-48 - 5, -48 + 8, 70, 2500, {.forwards = false, .chasePower = 8});
+			// TODO: Ishika, test line 192 (directly above) to see if it gets the bot closer to the match load position than line 191
 
 			controller.print(1, 0, "Skills Complete");
 			break;
