@@ -162,7 +162,19 @@ void autonomous() {
 			chassis.moveToPose(-60 + 5, -24 + 24, 180, 2500, {.forwards = false, .chasePower = 8});
 			chassis.waitUntilDone();
 			chassis.setPose(-72 + 26.5, -29.25, 180); // X, Y, Heading (degrees)
-			chassis.moveToPose(-48, -48 + 8, 60, 2500, {.forwards = false, .chasePower = 8});
+			chassis.moveToPose(-48, -48 + 3, 70, 2500, {.forwards = false, .chasePower = 8 + 6});
+			chassis.waitUntilDone();
+			ToggleHorizontalPneumaticWings();
+			pros::delay(500);
+			
+			//KickerMotor.move(127);
+			//pros::delay(30000);
+			//KickerMotor.brake();
+			pros::delay(500);
+			ToggleVerticalPneumaticWings();
+			pros::delay(500);
+			chassis.turnTo( -36,  -47,  2500);
+			chassis.moveToPoint(-50, -47, 2500);
 			// chassis.moveToPose(-48 - 5, -48 + 8, 70, 2500, {.forwards = false, .chasePower = 8});
 			// TODO: Ishika, test line 192 (directly above) to see if it gets the bot closer to the match load position than line 191
 

@@ -28,7 +28,7 @@ pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
 // Initializes the kicker motor to port 12, reversed, with a red (torque) gearset
-pros::Motor KickerMotor(-18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor KickerMotor(18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
@@ -71,7 +71,7 @@ void ControllerDisplay() {
     7: New Programming Skills
     8: Old Programming Skills
 */
-unsigned short int autonSelect = 7;
+unsigned short int autonSelect = 3;
 
 /*
     Integer variable to represent the current game phase
