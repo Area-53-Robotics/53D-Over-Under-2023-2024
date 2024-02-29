@@ -68,10 +68,10 @@ void ControllerDisplay() {
     4: Right Elims
     5: Full Autonomous Win Point
     6: No Auton
-    7: Programming Skills
-    8: Makhi Programming Skills
+    7: New Programming Skills
+    8: Old Programming Skills
 */
-unsigned short int autonSelect = 8;
+unsigned short int autonSelect = 7;
 
 /*
     Integer variable to represent the current game phase
