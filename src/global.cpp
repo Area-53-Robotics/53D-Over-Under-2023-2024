@@ -71,7 +71,7 @@ void ControllerDisplay() {
     7: New Programming Skills
     8: Old Programming Skills
 */
-unsigned short int autonSelect = 3;
+unsigned short int autonSelect = 7;
 
 /*
     Integer variable to represent the current game phase
