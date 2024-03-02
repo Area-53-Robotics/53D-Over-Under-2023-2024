@@ -91,7 +91,7 @@ void opcontrol()
 		else
 			IntakeMotor.brake();
 		
-		if (true) {
+		if (false) {
 			// If the kicker is in manual control mode...
 			if(manualKicker) {
 				// Then when B is pressed...

@@ -28,7 +28,7 @@ pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
 // Initializes the kicker motor to port 12, reversed, with a red (torque) gearset
-pros::Motor KickerMotor(18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor KickerMotor(-18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
@@ -51,11 +51,15 @@ bool manualKicker = true;
 
 // Prints driver control information onto the controller for the driver to view
 void ControllerDisplay() {
-    if(!drivetrainReversed) controller.print(0, 0, "Reversed: false");
-    else if(drivetrainReversed) controller.print(0, 0, "Reversed: true");
+    double avgTemp = (BLMotor.get_temperature() + MLMotor.get_temperature() + FLMotor.get_temperature() + BRMotor.get_temperature() + MRMotor.get_temperature() + FRMotor.get_temperature()) / 6;
     pros::delay(50);
-    if(manualKicker) controller.print(1, 0, "Kicker: Manual");
-    else if(!manualKicker) controller.print(1, 0, "Kicker: Automatic");
+    controller.print(0, 0, "Avg DT Temp: %0.2f", avgTemp);
+    pros::delay(50);
+    if(!drivetrainReversed) controller.print(1, 0, "Reversed: false");
+    else if(drivetrainReversed) controller.print(1, 0, "Reversed: true");
+    pros::delay(50);
+    if(manualKicker) controller.print(2, 0, "Kicker: Manual");
+    else if(!manualKicker) controller.print(2, 0, "Kicker: Automatic");
 }
 
 /*
@@ -71,7 +75,7 @@ void ControllerDisplay() {
     7: New Programming Skills
     8: Old Programming Skills
 */
-unsigned short int autonSelect = 7;
+unsigned short int autonSelect = 3;
 
 /*
     Integer variable to represent the current game phase
