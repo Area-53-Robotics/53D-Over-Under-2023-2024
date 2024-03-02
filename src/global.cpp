@@ -17,7 +17,7 @@ pros::Motor FLMotor(-2, pros::E_MOTOR_GEAR_BLUE);
 
 // --- Right Drivetrain Motors
 // Initializes the back right motor to port 18 with a blue gearset
-pros::Motor BRMotor(10, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor BRMotor(6, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the middle right motor to port 19 with a blue gearset
 pros::Motor MRMotor(9, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the front right motor to port 20 with a blue gearset
@@ -28,7 +28,7 @@ pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
 // Initializes the kicker motor to port 12, reversed, with a red (torque) gearset
-pros::Motor KickerMotor(-18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor KickerMotor(18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
@@ -75,7 +75,7 @@ void ControllerDisplay() {
     7: New Programming Skills
     8: Old Programming Skills
 */
-unsigned short int autonSelect = 3;
+unsigned short int autonSelect = 7;
 
 /*
     Integer variable to represent the current game phase

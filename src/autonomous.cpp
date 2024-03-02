@@ -207,7 +207,7 @@ void autonomous() {
 			ToggleVerticalPneumaticWings();
 			// 0.5 second delay to allow the wings to fall
 			pros::delay(500);
-			KickerMotor.move(120);
+			KickerMotor.move(127);
 			pros::delay(33000);
 			KickerMotor.brake();
 			pros::delay(500);
@@ -227,6 +227,8 @@ void autonomous() {
 			chassis.moveToPoint(48,-12, 2500, false);
 			chassis.waitUntilDone();
 			ToggleVerticalPneumaticWings();
+			chassis.moveToPoint(12, -12, 2500);
+			chassis.moveToPose(48, 12, 270, 2500, {.forwards = false, .chasePower = 8});
 			//ToggleVerticalPneumaticWings();
 			//chassis.moveToPose(60, -12, 90, 2500);
 
