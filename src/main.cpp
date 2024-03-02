@@ -36,28 +36,10 @@ void initialize() {
 	KickerMotor.brake();
 	// Clears the controller screen
 	controller.clear();
-	// Resets the inertial sensor readings
-	// Inertial.reset();
 	// Calibrates the LemLib chassis (takes 3 seconds)
 	chassis.calibrate();
-	// pros::delay(3000);
 
-	/*
-	 pros::Task screenTask([&]() {
-        lemlib::Pose pose(0, 0, 0);
-        while (true) {
-            // print robot location to the brain screen
-            pros::lcd::print(0, "X: %f", chassis.getPose().x); // x
-            pros::lcd::print(1, "Y: %f", chassis.getPose().y); // y
-            pros::lcd::print(2, "Theta: %f", chassis.getPose().theta); // heading
-            // log position telemetry
-            lemlib::telemetrySink()->info("Chassis pose: {}", chassis.getPose());
-            // delay to save resources
-            pros::delay(50);
-        }
-    });
-	*/
-
+	// Prints LemLib chassis position values to the computer terminal for debugging purposes
 	pros::Task terminalTask([&]() {
         while (true) {
             // print robot location to the brain screen

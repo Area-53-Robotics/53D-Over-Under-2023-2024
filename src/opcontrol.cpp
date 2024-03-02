@@ -76,21 +76,25 @@ void opcontrol()
 			LMotors.move(GetCurveOutput(-rightAxis));
 		}
 		
-		// When LEFT is pressed, toggles the activation of the wings
+		// When R2 is pressed, the activation of the horizontal wings is toggled
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R2))
 			ToggleHorizontalPneumaticWings();
 
+		// When R1 is pressed, the activation of the vertical wings is toggled
 		if(controller.get_digital_new_press(pros::E_CONTROLLER_DIGITAL_R1))
 			ToggleVerticalPneumaticWings();
 
-		// Allows L1 and L2 to move the intake forward and backwards respectively
+		// If L1 is behind held, the intake spins forward at maximum velocity
 		if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L1))
 			IntakeMotor.move(127);
+		// Otherwise, L2 is behind held, the intake spins bakcward at maximum velocity
 		else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_L2))
 			IntakeMotor.move(-127);
+		// If neither L1 nor L2 is behind held, the intake brakes
 		else
 			IntakeMotor.brake();
 		
+		// When the if statement is manually set to true, the kicker code is used. When it is manually set to false, the elevation code is used.
 		if (false) {
 			// If the kicker is in manual control mode...
 			if(manualKicker) {
@@ -116,20 +120,15 @@ void opcontrol()
 				KickerMotor.brake();
 			}
 		} else {
+			// If UP is being held, the elevation mechanism spins forward, lifting the robot upwards
 			if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_UP)) KickerMotor.move(127);
+			// Otherwise, if DOWN is being held, the elevation mechanism spins downward, allowing the robot to fall
 			else if(controller.get_digital(pros::E_CONTROLLER_DIGITAL_DOWN)) KickerMotor.move(-127);
+			// If neither UP nor DOWN are being held, the elevation mechanism brakes and holds its current position
 			else KickerMotor.brake();
 		}
 
 		count++;
-
-		if (count % 40 == 0) {
-			std::cout << "Hue: " << Optical.get_hue() << std::endl;
-			std::cout << "Saturation: " << Optical.get_saturation() << std::endl;
-			std::cout << "Brightness: " << Optical.get_brightness() << std::endl;
-			std::cout << "manualKicker: ";
-			std::cout << "-----------------------" << std::endl;
-		}
 
 		// Creates a 20 millisecond delay between each loop of the driver control code to prevent the starving of PROS kernel resources
 		pros::delay(20);

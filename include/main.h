@@ -73,6 +73,7 @@ void opcontrol(void);
 
 #ifdef __cplusplus
 #include "lemlib/api.hpp"
+#include "gif-pros/gifclass.hpp"
 #include "global.hpp"
 #include "autonomous.hpp"
 #include "subsystemHeaders/wings.hpp"
