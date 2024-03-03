@@ -31,6 +31,22 @@ void opcontrol()
 	// Activates the white LED light on the optical sensor
 	Optical.set_led_pwm(100);
 
+	if (false) {
+		controller.print(0, 0, "Driver Skills - New Version");
+		// Sets the robot's current position relative to the middle point of the field
+		chassis.setPose(-72 + 26.5, -60, 133); // X, Y, Heading (degrees)
+		// Pushes the initially placed triballs into the close side goal
+		chassis.moveToPose(-60 + 5, -24 + 24, 180, 2500, {.forwards = false, .chasePower = 8});
+		// Delays the next command until the drivetrain is done moving
+		chassis.waitUntilDone();
+		// Re-sets the position coordinates of the robot to account for wheel slippage
+		chassis.setPose(-72 + 26.5, -29.25, 180); // X, Y, Heading (degrees)
+		chassis.moveToPose(-48, -48 + 3, 75, 2500, {.forwards = false, .chasePower = 8 + 6});
+		chassis.waitUntilDone();
+		// Activates the vertical wings so that they are touching the match load bar
+		ToggleVerticalPneumaticWings();
+	}
+
 	while (true)
 	{
 		// Update Joysticks

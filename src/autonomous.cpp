@@ -91,7 +91,9 @@ void autonomous() {
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 2:
-			// Right Qualification Match Auton (single triball using PID)
+
+			
+			/*// Right Qualification Match Auton (single triball using PID)
 			controller.print(0, 0, "Right Quals Auton");
 			// Sets the robot's current position as the starting position for LemLib
 			chassis.setPose(0, 0, 0); // X, Y, Heading (degrees)
@@ -117,7 +119,7 @@ void autonomous() {
 			// Delays the next command by 1 second
 			pros::delay(1000);
 			// Drives the robot away from the goal so that it is not touching the triball at the end of the auton phase
-			chassis.moveToPoint(0, -15, 3000, true, 75);
+			chassis.moveToPoint(0, -15, 3000, true, 75);*/
 			controller.print(1, 0, "Auton Completed");
 			break;
 		case 3:
@@ -129,7 +131,11 @@ void autonomous() {
 			ToggleVerticalPneumaticWings();
 			pros::delay(250);
 			// Turns to the left to begin descoring the match load triball
-			chassis.turnTo(0, -60, 2000);
+			chassis.turnTo(0, 0, 2000);
+			chassis.waitUntilDone();
+			ToggleVerticalPneumaticWings();
+			chassis.moveToPoint(0, 0, 2500);
+			AutonIntake(1000, false);
 			pros::delay(250);
 			// Drives forward to finish descoring the match load triball
 			chassis.moveToPoint(-45, -60, 2000);
@@ -159,8 +165,8 @@ void autonomous() {
 			ToggleVerticalPneumaticWings();
 
 			// Below is pre- 3/1/24 stuff (I think it was made at Gateway)
-			/*
-			chassis.setPose(-48 - (7.0 / 2), -60, 135); // X, Y, Heading (degrees)
+			
+			/*chassis.setPose(-48 - (7.0 / 2), -60, 135); // X, Y, Heading (degrees)
 			// Lowers the vertical wings, activating them
 			ToggleVerticalPneumaticWings();
 			// Drives forward to descore the match load triball
@@ -168,12 +174,12 @@ void autonomous() {
 			// Lifts the vertical wings, deactivating them
 			ToggleVerticalPneumaticWings();
 			// Drives the robot towards the triball under the elevation bar
-			chassis.moveToPoint(-30, -18, 2000);
+			chassis.setPose(0, -60, 2000);
 			// Activates the intake
 			AutonIntake(1000,false);
 			// Drives the robot forward to intake the triball
-			chassis.moveToPoint(-30,-40,2000,false);
-			*/
+			//chassis.moveToPoint(-30,-40,2000,false);*/
+			
 			/*
 			pros::delay(500);
 			chassis.turnTo(24, -48, 5000, false);
@@ -201,7 +207,7 @@ void autonomous() {
 			chassis.waitUntilDone();
 			// Re-sets the position coordinates of the robot to account for wheel slippage
 			chassis.setPose(-72 + 26.5, -29.25, 180); // X, Y, Heading (degrees)
-			chassis.moveToPose(-48, -48 + 3, 75, 2500, {.forwards = false, .chasePower = 8 + 6});
+			chassis.moveToPose(-48, -48 + 3, 74, 2500, {.forwards = false, .chasePower = 8 + 6});
 			chassis.waitUntilDone();
 			// Activates the vertical wings so that they are touching the match load bar
 			ToggleVerticalPneumaticWings();
@@ -263,6 +269,20 @@ void autonomous() {
 
 			controller.print(1, 0, "Skills Complete");
 			break;
+		case 9:
+			chassis.setPose(12,-60,270);
+			IntakeMotor.move(127);
+			pros::delay(2500);
+			chassis.moveToPoint(6, -60, 2500);
+			chassis.waitUntilDone();
+			IntakeMotor.brake();
+			chassis.moveToPose(60, -48, 45, 3500, {.forwards = false, .chasePower = 8});
+			chassis.waitUntilDone();
+			ToggleVerticalPneumaticWings();
+			pros::delay(500);
+			chassis.moveToPose(60 + 5, -24 + 12, 0, 2500, {.forwards = false, .chasePower = 10});
+			chassis.waitUntilDone();
+			chassis.moveToPoint(60, -36, 2500);
 	}
 	
 }
