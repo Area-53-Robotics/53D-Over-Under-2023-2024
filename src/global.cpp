@@ -9,26 +9,26 @@ pros::Controller controller(pros::E_CONTROLLER_MASTER);
 
 // --- Left Drivetrain Motors
 // Initializes the back left motor to port 8, reversed, with a blue gearset
-pros::Motor BLMotor(-1, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor BLMotor(-20, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the middle left motor to port 9, reversed, with a blue gearset
-pros::Motor MLMotor(-11, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor MLMotor(-19, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the front left motor to port 3, reversed, with a blue gearset
-pros::Motor FLMotor(-2, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor FLMotor(-18, pros::E_MOTOR_GEAR_BLUE);
 
 // --- Right Drivetrain Motors
 // Initializes the back right motor to port 18 with a blue gearset
-pros::Motor BRMotor(6, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor BRMotor(10, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the middle right motor to port 19 with a blue gearset
 pros::Motor MRMotor(9, pros::E_MOTOR_GEAR_BLUE);
 // Initializes the front right motor to port 20 with a blue gearset
-pros::Motor FRMotor(20, pros::E_MOTOR_GEAR_BLUE);
+pros::Motor FRMotor(8, pros::E_MOTOR_GEAR_BLUE);
 
 // Drivetrain Motor Groups
 pros::Motor_Group LMotors({BLMotor, MLMotor, FLMotor});
 pros::Motor_Group RMotors({BRMotor, MRMotor, FRMotor});
 
 // Initializes the kicker motor to port 12, reversed, with a red (torque) gearset
-pros::Motor KickerMotor(-18, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
+pros::Motor KickerMotor(-17, pros::E_MOTOR_GEAR_RED, pros::E_MOTOR_ENCODER_DEGREES);
 pros::Motor IntakeMotor(7, pros::E_MOTOR_GEAR_BLUE);
 
 // Initializes DigitalOut objects to control the pneumatic wings.
